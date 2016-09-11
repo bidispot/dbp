@@ -10,7 +10,7 @@ const imgHoverSrc = [require('../../assets/cash-fill.png'),
                       require('../../assets/accounts-fill.png'),
                       require('../../assets/pricing-fill.png')];
 
-export default class NavBar extends Component {
+export default class DashBoard extends Component {
 
   constructor(props) {    
     super(props);
