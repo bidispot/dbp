@@ -1,5 +1,5 @@
-import React, { Component } from 'react'; 
-import {Navbar, Nav, NavItem } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Badge, Navbar, Nav, NavItem } from "react-bootstrap";
 
 export default class NavBar extends Component {
   render() {
@@ -9,11 +9,14 @@ export default class NavBar extends Component {
           <Navbar.Brand>
             <span className="teal">Digital Business Platform</span>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Nav>
-          <NavItem eventKey={1} href="#">Settings</NavItem>
-          <NavItem eventKey={2} href="#">Logout</NavItem>
-        </Nav>
+        <Navbar.Collapse>
+          <Nav pullRight>
+            <NavItem eventKey={1} href="#">Notifications <Badge>0</Badge></NavItem>
+            <NavItem eventKey={2} href="#">Logged in as: <span className="teal">Jeff Bezos (hl666)</span></NavItem>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }
