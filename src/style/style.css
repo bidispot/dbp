@@ -7,3 +7,11 @@ body {
 .teal {
   color: #00a5c0 !important;
 }
+
+.panel {
+  margin: 30px 50px;
+}
+
+.queryButton {
+  margin-right: 20px;
+}
