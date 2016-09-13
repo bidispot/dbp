@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Image } from "react-bootstrap";
+import { Link } from 'react-router';
 
 const imgSrc = [require('../../assets/cash.png'),
   require('../../assets/indicators.png'),
@@ -43,40 +44,48 @@ export default class DashBoard extends Component {
         <Row style={{ marginTop: 100 }}>
           <Col xs={6} md={6} style={{ paddingRight: 100 }}>
             <div className="pull-right">
-              <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(0) } />
-              <br />
-              <div style={{ marginTop: 20, textAlign: 'center' }}>
-                <span style={{ textAlign: 'center' }}>Cash balances</span>
-              </div>
+              <Link to="/balances">
+                <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(0) } />
+                <br />
+                <div style={{ marginTop: 20, textAlign: 'center' }}>
+                  <span style={{ textAlign: 'center' }}>Cash balances</span>
+                </div>
+              </Link>
             </div>
           </Col>
           <Col xs={6} md={6} style={{ paddingLeft: 100 }}>
             <div className="pull-left">
-              <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(1) } />
-              <br />
-              <div style={{ marginTop: 20, textAlign: 'center' }}>
-                <span style={{ textAlign: 'center' }}>Indicators</span>
-              </div>
+              <Link to="/indicators">
+                <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(1) } />
+                <br />
+                <div style={{ marginTop: 20, textAlign: 'center' }}>
+                  <span style={{ textAlign: 'center' }}>Indicators</span>
+                </div>
+              </Link>
             </div>
           </Col>
         </Row>
         <Row style={{ marginTop: 100 }}>
           <Col xs={6} md={6} style={{ paddingRight: 100 }}>
             <div className="pull-right">
-              <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(2) } />
-              <br />
-              <div style={{ marginTop: 20, textAlign: 'center' }}>
-                <span style={{ textAlign: 'center' }}>Accounts</span>
-              </div>
+              <Link to="/accounts">
+                <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(2) } />
+                <br />
+                <div style={{ marginTop: 20, textAlign: 'center' }}>
+                  <span style={{ textAlign: 'center' }}>Accounts</span>
+                </div>
+              </Link>
             </div>
           </Col>
           <Col xs={6} md={6} style={{ paddingLeft: 100 }}>
             <div className="pull-left">
-              <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(3) } />
-              <br />
-              <div style={{ marginTop: 20, textAlign: 'center' }}>
-                <span style={{ textAlign: 'center' }}>Pricing</span>
-              </div>
+              <Link to="/ref_data">
+                <Image onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} src={this.getImg(3) } />
+                <br />
+                <div style={{ marginTop: 20, textAlign: 'center' }}>
+                  <span style={{ textAlign: 'center' }}>Pricing</span>
+                </div>
+              </Link>
             </div>
           </Col>
         </Row>
