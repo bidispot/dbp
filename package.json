@@ -10,7 +10,6 @@
     "immutable": "^3.8.1",
     "normalizr": "^2.2.1",
     "react": "^15.3.1",
-    "react-addons": "^0.9.1-deprecated",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
