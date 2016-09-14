@@ -8,7 +8,6 @@ import routes from './routes';
 import dbpApp from './reducers';
 import { queryBalances } from './actions';
 
-const x = 0;
 let store = createStore(dbpApp, applyMiddleware(thunk, api));
 console.log(store.getState());
 store.subscribe(() => {
