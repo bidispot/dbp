@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavBar from '../containers/nav_bar';
+import MyPageHeader from './page_header';
 
-// Base styling
-import "../style/style.css";
-
-export default class Indicators extends Component {
-  render() {
+const Indicators = () => {
     return (
       <div>
         <NavBar />
-        Indicators
+        <div className="page-wrapper content">
+          <MyPageHeader title="Indicators" />
+        </div>
       </div>
     );
-  }
-}
+};
+
+export default Indicators;
