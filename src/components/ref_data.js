@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavBar from '../containers/nav_bar';
+import MyPageHeader from './page_header';
 import Query from '../containers/ref_data_query'
 import List from '../containers/ref_data_list'
-// Base styling
-import "../style/style.css";
 
-export default class ReferenceData extends Component {
-  render() {
+const ReferenceData = () => {
     return (
       <div>
         <NavBar />
-        <Query />
-        <List />
+        <div className="page-wrapper content">
+          <MyPageHeader title="Reference Data" />
+          <Query />
+          <List />
+        </div>
       </div>
     );
-  }
-}
+};
+
+export default ReferenceData;

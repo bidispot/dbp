@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavBar from '../containers/nav_bar';
+import MyPageHeader from './page_header';
 import Query from '../containers/accounts_query'
 import List from '../containers/accounts_list'
-// Base styling
-import "../style/style.css";
 
-export default class Accounts extends Component {
-  render() {
-    return (
-      <div>
-        <NavBar />
+const Accounts = () => {
+  return (
+    <div>
+      <NavBar />
+      <div className="page-wrapper content">
+        <MyPageHeader title="Accounts" />
         <Query />
         <List />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Accounts;
