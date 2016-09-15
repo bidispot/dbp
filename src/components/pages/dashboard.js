@@ -43,10 +43,10 @@ const DashBoard = () => {
                 linkTo="/" />
             </div>
             <div className="col-lg-4 col-md-8">
-              <StatWidget style="success"
+              <StatWidget style="warning"
                 icon="eur"
                 count="124"
-                headerText="Unmatched inx in EUR"
+                headerText="Unmatched instructions (EUR)"
                 footerText="View Details"
                 linkTo="/" />
             </div>
