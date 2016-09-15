@@ -24,6 +24,16 @@ body {
   font-size: 3em;
 }
 
+.welcome-date {
+  margin: 0 5px 0 20px;
+}
+
+.clock-div {
+    float: left;
+    margin: 15px 20px 0 0;
+    color: #777;
+}
+
 .balances_primary_color {
   color: #9c3;
 }
@@ -40,7 +50,7 @@ body {
   color: #8a6d3b;
 }
 
-.stat-panel-haeding {
+.stat-panel-heading {
   min-height: 100px;
 }
 
@@ -81,6 +91,9 @@ body {
   background-color: #3c763d;
   color: #dff0d8;
 }
+.main-page {
+  margin-top: 58px;
+}
 
 .page-header {
     margin: 20px 0 0 10px;
@@ -88,7 +101,7 @@ body {
 
 .page-wrapper {
     padding: 2px;
-    min-height: 568px;
+    min-height: 800px;
     height: 100%;
     background-color: #fff;
     border-radius: 4px;

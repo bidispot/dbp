@@ -1,6 +1,6 @@
 import React from 'react';
-import MyPageHeader from './page_header';
-import StatWidget from "./stat_widget";
+import MyPageHeader from '../common/page_header';
+import StatWidget from "../common/stat_widget";
 
 const DashBoard = () => {
   return (
@@ -43,10 +43,10 @@ const DashBoard = () => {
                 linkTo="/" />
             </div>
             <div className="col-lg-4 col-md-8">
-              <StatWidget style="success"
+              <StatWidget style="warning"
                 icon="eur"
                 count="124"
-                headerText="Unmatched inx in EUR"
+                headerText="Unmatched instructions (EUR)"
                 footerText="View Details"
                 linkTo="/" />
             </div>
@@ -56,3 +56,4 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+

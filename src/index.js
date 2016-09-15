@@ -8,6 +8,7 @@ import routes from './routes';
 import dbpApp from './reducers';
 import { queryBalances } from './actions';
 import { getCashBalancesQueryResults } from './selectors';
+import "./style/style.css";
 
 let store = createStore(dbpApp, applyMiddleware(thunk, api));
 
