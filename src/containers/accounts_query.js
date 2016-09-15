@@ -26,13 +26,13 @@ export default class AccountsQuery extends Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button className="queryButton" type="submit">
+              <Button className="query-button" type="submit">
                 Query
               </Button>
-              <Button className="queryButton" type="submit">
+              <Button className="query-button" type="submit">
                 Count
               </Button>
-              <Button className="queryButton" type="submit">
+              <Button className="query-button" type="submit">
                 Reset
               </Button>
             </Col>
