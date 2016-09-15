@@ -25,7 +25,13 @@ body {
 }
 
 .welcome-date {
-  margin: 0 20px 0 40px;
+  margin: 0 5px 0 20px;
+}
+
+.clock-div {
+    float: left;
+    margin: 15px 20px 0 0;
+    color: #777;
 }
 
 .balances_primary_color {
@@ -44,7 +50,7 @@ body {
   color: #8a6d3b;
 }
 
-.stat-panel-haeding {
+.stat-panel-heading {
   min-height: 100px;
 }
 
