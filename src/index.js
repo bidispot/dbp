@@ -7,21 +7,18 @@ import api from './middleware/api.js';
 import routes from './routes';
 import dbpApp from './reducers';
 import { queryBalances } from './actions';
+import { getCashBalancesQueryResults } from './selectors';
 
 let store = createStore(dbpApp, applyMiddleware(thunk, api));
-console.log(store.getState());
+
 store.subscribe(() => {
     let state = store.getState();
-    console.log(state);
-    const { balances } = state;
-    if (balances) {
-      console.log(balances.queryParameters);
-    }
+    console.log(getCashBalancesQueryResults(state));
   }
 )
 
-store.dispatch(queryBalances({}));
 store.dispatch(queryBalances({account: "UBS"}));
+store.dispatch(queryBalances({}));
 
 ReactDOM.render(
   <Router history={browserHistory} routes={routes} />

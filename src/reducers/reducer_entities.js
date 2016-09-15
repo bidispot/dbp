@@ -19,7 +19,7 @@ export default (state = INITIAL_STATE, action) => {
     const records = new Map({ balances: balanceRecords });
 
     // Merge them to the current state
-    return state.merge(records);
+    return state.mergeDeep(records);
   }
 
   return state;
