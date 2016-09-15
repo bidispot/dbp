@@ -1,11 +1,14 @@
 import { AppError } from './model';
+import { RESET_ERRORS } from '../actions';
 
 const INITIAL_STATE = null;
 
 export default (state = INITIAL_STATE, action) => {
-  const { errorMessage } = action;
+  const { type, errorMessage } = action;
 
-  if (errorMessage) {
+  if (type === RESET_ERRORS) {
+    return null;
+  } else if (errorMessage) {
     return new AppError({
       message: errorMessage
     })
