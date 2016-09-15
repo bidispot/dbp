@@ -40,7 +40,11 @@ body {
   color: #8a6d3b;
 }
 
-.queryButton {
+.stat-panel-haeding {
+  min-height: 100px;
+}
+
+.query-button {
   margin-right: 20px;
 }
 
@@ -53,6 +57,29 @@ body {
   margin-bottom: 6px;
   margin-left: 6px;
   background-color: #888;
+}
+
+.navbar-tasks {
+  color: #a94442;
+}
+
+.navbar-badge-tasks {
+  background-color: #a94442;
+  color: #f2dede;
+}
+
+.navbar-badge-messages {
+  background-color: #31708f;
+  color: #d9edf7;
+}
+
+.navbar-notif {
+  color: #3c763d;
+}
+
+.navbar-badge-notif {
+  background-color: #3c763d;
+  color: #dff0d8;
 }
 
 .page-header {

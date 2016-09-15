@@ -16,8 +16,29 @@ export default class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavDropdown eventKey={1} title={<span className="teal"><Glyphicon glyph="tasks" />
-              <Badge className="navbar-badge">3</Badge></span> } id="tasks">
+            <NavDropdown eventKey={1} title={<span  className="teal"><Glyphicon glyph="envelope" />
+              <Badge className="navbar-badge navbar-badge-messages">3</Badge></span>} id="messages">
+              <MenuItem eventKey="1">
+                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey="2">
+                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey="3">
+                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey="4">
+                <strong>Read All Messages</strong> <span className="pull-right"><Glyphicon glyph="triangle-right" /></span>
+              </MenuItem>
+            </NavDropdown>
+            <NavDropdown eventKey={2} title={<span className="navbar-tasks"><Glyphicon glyph="tasks" />
+              <Badge className="navbar-badge navbar-badge-tasks">3</Badge></span> } id="tasks">
               <MenuItem eventKey="1" style={ { width: 300 } }>
                 <div>
                   <p> <strong>Task 1</strong> <span className="pull-right text-muted">80% Complete</span> </p>
@@ -49,29 +70,8 @@ export default class NavBar extends Component {
                 <strong>See All Tasks</strong> <span className="pull-right"><Glyphicon glyph="triangle-right" /></span>
               </MenuItem>
             </NavDropdown>
-            <NavDropdown eventKey={2} title={<span  className="teal"><Glyphicon glyph="envelope" />
-              <Badge className="navbar-badge">3</Badge></span>} id="messages">
-              <MenuItem eventKey="1">
-                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
-              </MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey="2">
-                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
-              </MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey="3">
-                <div> <strong>John Smith</strong> <span className="pull-right text-muted"> <em>Yesterday</em> </span> </div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Pellentesque eleifend...</div>
-              </MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey="4">
-                <strong>Read All Messages</strong> <span className="pull-right"><Glyphicon glyph="triangle-right" /></span>
-              </MenuItem>
-            </NavDropdown>
-            <NavDropdown eventKey={3} title={<span  className="teal"><Glyphicon glyph="bell" />
-              <Badge className="navbar-badge">4</Badge></span>} id="notifications">
+            <NavDropdown eventKey={3} title={<span  className="navbar-notif"><Glyphicon glyph="bell" />
+              <Badge className="navbar-badge navbar-badge-notif">4</Badge></span>} id="notifications">
               <MenuItem eventKey="1" style={ { width: 300 } }>
                 <div> <span className="teal"><Glyphicon bsStyle="info" glyph="comment" /></span> New Comment <span className="pull-right text-muted small">4 minutes ago</span> </div>
               </MenuItem>
@@ -101,9 +101,7 @@ export default class NavBar extends Component {
               </MenuItem>
               <MenuItem divider />
               <MenuItem eventKey="4">
-                <Link to="/">
-                  <Glyphicon glyph="log-out" /> Logout
-                </Link>
+                <Glyphicon glyph="log-out" /> Logout
               </MenuItem>
             </NavDropdown>
           </Nav>
@@ -138,7 +136,7 @@ export default class NavBar extends Component {
                 <Link to="/ref_data" className="ref_data_primary_color"><Glyphicon glyph="stats" /> &nbsp; Reference Data</Link>
               </li>
               <li>
-                <Link to="/ref_data"> &nbsp; About</Link>
+                <Link to="/"> &nbsp; About</Link>
               </li>
             </ul>
           </div>
