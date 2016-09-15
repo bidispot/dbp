@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../containers/nav_bar';
+import NavBar from './nav_bar';
 import Dashboard from './dashboard';
 import "../style/style.css";
 

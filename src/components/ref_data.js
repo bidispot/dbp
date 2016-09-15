@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../containers/nav_bar';
+import NavBar from './nav_bar';
 import MyPageHeader from './page_header';
 import Query from '../containers/ref_data_query'
 import List from '../containers/ref_data_list'

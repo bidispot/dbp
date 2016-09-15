@@ -6,7 +6,7 @@ const StatWidget = (props) => {
 		return (
       <Panel className="stat" bsStyle={props.style}
 
-        header={<div className="row">
+        header={<div className="stat-panel-haeding row">
                   <div className="col-xs-3">
                       <span className="big_icon"><Glyphicon glyph={props.icon} /></span>
                   </div>

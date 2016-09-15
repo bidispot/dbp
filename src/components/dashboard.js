@@ -18,13 +18,13 @@ const DashBoard = () => {
             <div className="col-lg-4 col-md-8">
               <StatWidget style="danger"
                 icon="tasks"
-                count="12"
-                headerText="New Tasks"
+                count="3"
+                headerText="Pending tasks"
                 footerText="View Details"
                 linkTo="/" />
             </div>
           </div>
-          <MyPageHeader title="My data" />
+          <MyPageHeader title="Current data" />
           <div className="row">
             <div className="col-lg-4 col-md-8">
               <StatWidget style="danger"
@@ -38,7 +38,7 @@ const DashBoard = () => {
               <StatWidget style="success"
                 icon="user"
                 count="34"
-                headerText="Positive balances"
+                headerText="Accounts"
                 footerText="View Details"
                 linkTo="/" />
             </div>
