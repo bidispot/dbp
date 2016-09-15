@@ -28,10 +28,10 @@ export default (state = INITIAL_STATE, action) => {
     case QUERY_BALANCES_SUCCESS:
       const { response } = action;
       if (response) {
-        const results = response.results || [];
+        const result = response.result || [];
 
         // New query results
-        const queryResults = new List(results);
+        const queryResults = new List(result);
         return state
           .set('isQuerying', false)
           .set('queryResults', queryResults);
