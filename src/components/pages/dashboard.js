@@ -1,6 +1,6 @@
 import React from 'react';
-import MyPageHeader from './page_header';
-import StatWidget from "./stat_widget";
+import MyPageHeader from '../common/page_header';
+import StatWidget from "../common/stat_widget";
 
 const DashBoard = () => {
   return (
@@ -56,3 +56,4 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+

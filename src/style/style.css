@@ -24,6 +24,10 @@ body {
   font-size: 3em;
 }
 
+.welcome-date {
+  margin: 0 20px 0 40px;
+}
+
 .balances_primary_color {
   color: #9c3;
 }
@@ -81,6 +85,9 @@ body {
   background-color: #3c763d;
   color: #dff0d8;
 }
+.main-page {
+  margin-top: 58px;
+}
 
 .page-header {
     margin: 20px 0 0 10px;
@@ -88,7 +95,7 @@ body {
 
 .page-wrapper {
     padding: 2px;
-    min-height: 568px;
+    min-height: 800px;
     height: 100%;
     background-color: #fff;
     border-radius: 4px;
