@@ -7,6 +7,7 @@ import api from './middleware/api.js';
 import routes from './routes';
 import dbpApp from './reducers';
 import { queryBalances } from './actions';
+import "./style/style.css";
 
 let store = createStore(dbpApp, applyMiddleware(thunk, api));
 console.log(store.getState());
