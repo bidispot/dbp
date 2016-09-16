@@ -9,21 +9,34 @@ class BalancesQuery extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props.queryParameters);
-
     // This is the only place we are allowed to write this.state = ...
+    // It represents the internal state of the query screen which may be different than the global state
+    // This would normally be an anti-pattern but here we just want to initialise the query screen to the global state
+    // Then, the two will diverge until we execute a query.
     this.state = {
-      paramAccount: props.queryParameters.account,
-      paramDateFrom: props.queryParameters.dateFrom,
-      paramDateTo: props.queryParameters.dateTo
+      paramAccount: props.queryParameters.account || '',
+      paramDateFrom: props.queryParameters.dateFrom || '',
+      paramDateTo: props.queryParameters.dateTo || ''
     };
 
     this.onAccountParameterChange = this.onAccountParameterChange.bind(this);
     this.onQuerySubmit = this.onQuerySubmit.bind(this);
+    this.onQueryReset = this.onQueryReset.bind(this);
   }
 
   onQuerySubmit(e) {
     this.props.queryBalances(this.buildQueryParametersFromLocalState());
+    e.preventDefault();
+  }
+
+  onQueryReset(e) {
+    // Resets internal state only
+    this.setState({
+      paramAccount: '',
+      paramDateFrom: '',
+      paramDateTo: ''
+    });
+
     e.preventDefault();
   }
 
@@ -70,7 +83,7 @@ class BalancesQuery extends Component {
               <Button className="query-button" type="submit">
                 Count
               </Button>
-              <Button className="query-button" type="submit">
+              <Button className="query-button" type="submit" onClick={this.onQueryReset}>
                 Reset
               </Button>
             </Col>
