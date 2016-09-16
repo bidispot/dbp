@@ -18,8 +18,6 @@ class BalancesQuery extends Component {
       paramDateTo: props.queryParameters.dateTo
     };
 
-    console.log(this.state);
-
     this.onAccountParameterChange = this.onAccountParameterChange.bind(this);
     this.onQuerySubmit = this.onQuerySubmit.bind(this);
   }
