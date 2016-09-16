@@ -24,6 +24,10 @@ body {
   font-size: 3em;
 }
 
+.welcome {
+  margin-left: 28px;
+}
+
 .welcome-date {
   margin: 0 5px 0 20px;
 }
