@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
-import { Panel, Table } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { getCashBalancesQueryResults } from '../selectors';
 
-export default class AccountsList extends Component {
+class AccountsList extends Component {
+  asJson() {
+    return [...this.props.results].map((balance) => {
+      return balance.toJS();
+    });
+  };
+
   render() {
+    if (!this.props.results || this.props.results.size === 0) {
+      return <div>No rows available</div>
+    }
+
     return (
       <Panel collapsible defaultExpanded header="List" bsStyle="info">
-        <Table responsive striped hover style={{ margin: 20 }}>
-          <thead>
-            <tr>
-              <th>Account</th>
-              <th>Account Name</th>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>12345</td>
-              <td>Fortis</td>
-              <td>EUR</td>
-              <td>3,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>13456</td>
-              <td>Barclays</td>
-              <td>EUR</td>
-              <td>50,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>54321</td>
-              <td>ING</td>
-              <td>EUR</td>
-              <td>1,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-          </tbody>
-        </Table>
+        <BootstrapTable
+          data={this.asJson()}
+          striped={true}
+          hover={true}
+          condensed={true}
+          pagination={true}
+          search={true}>
+          <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
+          <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
+          <TableHeaderColumn dataField="accountName" dataSort={true}>Account Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="amount" dataAlign="right" dataSort={true}>Amount</TableHeaderColumn>
+        </BootstrapTable>
+
       </Panel>
     );
   };
 }
+
+const mapStateToProps = (state) => {
+  return {
+    results: getCashBalancesQueryResults(state)
+  }
+}
+
+export default connect(mapStateToProps)(AccountsList);
