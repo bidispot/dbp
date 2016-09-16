@@ -88,6 +88,7 @@ class BalancesQuery extends Component {
             </Col>
             <Col sm={3}>
               <DatePicker
+                dateFormat="DD/MM/YYYY"
                 value={dateUtils.convertDateFromMillis(this.state.paramDateFrom)}
                 onChange={this.onDateFromParameterChange} />
             </Col>
@@ -96,6 +97,7 @@ class BalancesQuery extends Component {
             </Col>
             <Col sm={3}>
               <DatePicker
+                dateFormat="DD/MM/YYYY"
                 value={dateUtils.convertDateFromMillis(this.state.paramDateTo)}
                 onChange={this.onDateToParameterChange} />
             </Col>
