@@ -6,7 +6,7 @@ export const QUERY_BALANCES_SUCCESS = 'QUERY_BALANCES_SUCCESS';
 export const QUERY_BALANCES_FAILURE = 'QUERY_BALANCES_FAILURE';
 export const RESET_ERRORS = "RESET_ERRORS";
 
-const BALANCES_URL = 'balances';
+const BALANCES_URL = 'balances/query';
 
 /**
  * Runs a query against cash balances

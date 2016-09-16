@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 import _ from 'lodash';
 import axios from 'axios';
 
-const ROOT_URL = 'http://private-anon-eab6fb7599-dbp.apiary-mock.com';
+const ROOT_URL = 'https://dbpgo.herokuapp.com';
 
 /**
  * Removes (sub-)properties with null or undefined values from a given JSON object
