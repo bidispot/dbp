@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
+import DatePicker from 'react-bootstrap-date-picker';
 import { queryBalances } from '../actions';
 import { getCashBalancesQueryParameters } from '../selectors';
-import DatePicker from 'react-bootstrap-date-picker';
+
 
 class BalancesQuery extends Component {
 
   constructor(props) {
     super(props);
 
-    console.log(props.queryParameters);
-
     // This is the only place we are allowed to write this.state = ...
+    // It represents the internal state of the query screen which may be different than the global state
+    // This would normally be an anti-pattern but here we just want to initialise the query screen to the global state
+    // Then, the two will diverge until we execute a query.
     this.state = {
       paramAccount: props.queryParameters.account || '',
-      paramDateFrom: props.queryParameters.dateFrom || '',
-      paramDateTo: props.queryParameters.dateTo || ''
+      paramDateFrom: props.queryParameters.dateFrom,
+      paramDateTo: props.queryParameters.dateTo
     };
 
-    console.log(this.state);
-
     this.onAccountParameterChange = this.onAccountParameterChange.bind(this);
+    this.onDateFromParameterChange = this.onDateFromParameterChange.bind(this);
+    this.onDateToParameterChange = this.onDateToParameterChange.bind(this);
     this.onQuerySubmit = this.onQuerySubmit.bind(this);
+    this.onQueryReset = this.onQueryReset.bind(this);
   }
 
   onQuerySubmit(e) {
@@ -30,16 +33,43 @@ class BalancesQuery extends Component {
     e.preventDefault();
   }
 
+  onQueryReset(e) {
+    // Resets internal state only
+    this.setState({
+      paramAccount: '',
+      paramDateFrom: null,
+      paramDateTo: null
+    });
+
+    e.preventDefault();
+  }
+
   onAccountParameterChange(e) {
     this.setState({ paramAccount: e.target.value });
+  }
+
+  onDateFromParameterChange(date) {
+    this.setState({ paramDateFrom: this.parseDateToMillis(date) });
+  }
+
+  onDateToParameterChange(date) {
+    this.setState({ paramDateTo: this.parseDateToMillis(date) });
   }
 
   buildQueryParametersFromLocalState() {
     return {
       account: this.state.paramAccount !== '' ? this.state.paramAccount : null,
-      dateFrom: this.state.paramDateFrom !== '' ? this.state.paramDateFrom : null,
-      dateTo: this.state.paramDateTo !== '' ? this.state.paramDateTo : null
+      dateFrom: this.state.paramDateFrom,
+      dateTo: this.state.paramDateTo
     }
+  }
+
+  parseDateToMillis(date) {
+    return date != null ? new Date(date).getTime() : null;
+  }
+
+  convertDateFromMillis(date) {
+    return date != null ? new Date(date).toISOString() : null;
   }
 
   render() {
@@ -64,13 +94,17 @@ class BalancesQuery extends Component {
               From
             </Col>
             <Col sm={3}>
-              <DatePicker />
+              <DatePicker
+                value={this.convertDateFromMillis(this.state.paramDateFrom)}
+                onChange={this.onDateFromParameterChange} />
             </Col>
             <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
               To
             </Col>
             <Col sm={3}>
-              <DatePicker />
+              <DatePicker
+                value={this.convertDateFromMillis(this.state.paramDateTo)}
+                onChange={this.onDateToParameterChange} />
             </Col>
           </FormGroup>
 
@@ -79,10 +113,7 @@ class BalancesQuery extends Component {
               <Button className="query-button" type="submit">
                 Query
               </Button>
-              <Button className="query-button" type="submit">
-                Count
-              </Button>
-              <Button className="query-button" type="submit">
+              <Button className="query-button" type="submit" onClick={this.onQueryReset}>
                 Reset
               </Button>
             </Col>
