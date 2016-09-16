@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
+import DatePicker from 'react-bootstrap-date-picker';
 
 export default class ReferenceDataQuery extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class ReferenceDataQuery extends Component {
             <Col componentClass={ControlLabel} sm={2}>
               Account
             </Col>
-            <Col sm={9}>
+            <Col sm={8}>
               <FormControl type="text" placeholder="Account: e.g. 12345" />
             </Col>
           </FormGroup>
@@ -19,8 +20,17 @@ export default class ReferenceDataQuery extends Component {
             <Col componentClass={ControlLabel} sm={2}>
               Date
             </Col>
-            <Col sm={9}>
-              <FormControl type="text" placeholder="Date with format: dd/mm/yyyy" />
+            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
+              From
+            </Col>
+            <Col sm={3}>
+              <DatePicker />
+            </Col>
+            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
+              To
+            </Col>
+            <Col sm={3}>
+              <DatePicker />
             </Col>
           </FormGroup>
 

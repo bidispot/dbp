@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Table } from "react-bootstrap";
+import { Panel, Table } from 'react-bootstrap';
 
 export default class AccountsList extends Component {
   render() {
