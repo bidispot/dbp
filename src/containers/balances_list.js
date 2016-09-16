@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
-import { Panel, Table } from "react-bootstrap";
+import { Panel, Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { getCashBalancesQueryResults } from '../selectors';
 
-export default class BalancesList extends Component {
+class BalancesList extends Component {
+
+  renderBalances() {
+    return this.props.results.map((balance) => {
+      return (
+        <tr key={balance.id}>
+          <td>{balance.account}</td>
+          <td>{balance.accountName}</td>
+          <td>{balance.currency}</td>
+          <td>{balance.amount}</td>
+          <td>{balance.date}</td>
+        </tr>
+      );
+    });
+  }
+
   render() {
     return (
       <Panel collapsible defaultExpanded header="List" bsStyle="success">
@@ -16,30 +33,18 @@ export default class BalancesList extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>12345</td>
-              <td>Fortis</td>
-              <td>EUR</td>
-              <td>3,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>13456</td>
-              <td>Barclays</td>
-              <td>EUR</td>
-              <td>50,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>54321</td>
-              <td>ING</td>
-              <td>EUR</td>
-              <td>1,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
+            {this.renderBalances()}
           </tbody>
         </Table>
       </Panel>
     );
   };
 }
+
+const mapStateToProps = (state) => {
+  return {
+    results: getCashBalancesQueryResults(state)
+  }
+}
+
+export default connect(mapStateToProps)(BalancesList);
