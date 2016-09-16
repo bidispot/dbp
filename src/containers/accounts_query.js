@@ -4,7 +4,6 @@ import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from '
 import DatePicker from 'react-bootstrap-date-picker';
 import { queryBalances } from '../actions';
 import { getCashBalancesQueryParameters } from '../selectors';
-import moment from 'moment';
 
 class AccountsQuery extends Component {
 

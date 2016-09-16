@@ -465,3 +465,7 @@ table.dataTable thead .sorting:after {
 .stat .panel-body {
     display:none;
 }
+
+.currency-table {
+  margin-left: 10px;
+}

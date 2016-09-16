@@ -13,7 +13,11 @@ class AccountsList extends Component {
 
   render() {
     if (!this.props.results || this.props.results.size === 0) {
-      return <div>No rows available</div>
+      return (
+        <Panel collapsible defaultExpanded header="List" bsStyle="info">
+          <div>No rows available</div>
+        </Panel>
+      );
     }
 
     return (
@@ -23,11 +27,10 @@ class AccountsList extends Component {
           striped={true}
           hover={true}
           condensed={true}
-          pagination={true}
           search={true}>
           <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
           <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
-          <TableHeaderColumn dataField="accountName" dataSort={true}>Account Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="accountName" dataAlign="right" dataSort={true}>Account Name</TableHeaderColumn>
           <TableHeaderColumn dataField="amount" dataAlign="right" dataSort={true}>Amount</TableHeaderColumn>
         </BootstrapTable>
 
