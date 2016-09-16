@@ -12,6 +12,7 @@ build
 # editors
 typings/
 .vscode/
+.history/
 
 # misc
 .DS_Store

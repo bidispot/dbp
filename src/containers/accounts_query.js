@@ -60,13 +60,13 @@ class AccountsQuery extends Component {
               From
             </Col>
             <Col sm={3}>
-              <DatePicker />
+              <DatePicker dateFormat="DD/MM/YYYY" value={new Date().toISOString()} />
             </Col>
             <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
               To
             </Col>
             <Col sm={3}>
-              <DatePicker />
+              <DatePicker dateFormat="DD/MM/YYYY" value={new Date().toISOString()} />
             </Col>
           </FormGroup>
 

@@ -1,45 +1,55 @@
 import React, { Component } from 'react';
-import { Panel, Table } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { connect } from 'react-redux';
 import { getCashBalancesQueryResults } from '../selectors';
+import moment from 'moment';
 
 class BalancesList extends Component {
 
-  renderBalances() {
-    return this.props.results.map((balance) => {
-      return (
-        <tr key={balance.id}>
-          <td>{balance.account}</td>
-          <td>{balance.accountName}</td>
-          <td>{balance.currency}</td>
-          <td>{balance.amount}</td>
-          <td>{balance.date}</td>
-        </tr>
-      );
+  asJson() {
+    return [...this.props.results].map((balance) => {
+      return balance.toJS();
     });
+  };
+
+  amountFormatter(cell, row) {
+    const glyphIcon = 'glyphicon-'+row.currency.toLowerCase();
+    return cell + '<i class="currency-table glyphicon '+glyphIcon+' "></i> ';
+  }
+
+  dateFormatter(cell, row) {
+    return moment.unix(cell).format('DD/MM/YYYY');
   }
 
   render() {
+    if (!this.props.results || this.props.results.size === 0) {
+      return (
+        <Panel collapsible defaultExpanded header="List" bsStyle="success">
+          <div>No rows available</div>
+        </Panel>
+      );
+    }
+
     return (
       <Panel collapsible defaultExpanded header="List" bsStyle="success">
-        <Table responsive striped hover style={{ margin: 20 }}>
-          <thead>
-            <tr>
-              <th>Account</th>
-              <th>Account Name</th>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderBalances()}
-          </tbody>
-        </Table>
+        <BootstrapTable
+          data={this.asJson()}
+          striped={true}
+          hover={true}
+          condensed={true}
+          search={true}>
+          <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
+          <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
+          <TableHeaderColumn dataField="accountName" dataAlign="right" dataSort={true}>Account Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="amount" dataAlign="right" dataSort={true} dataFormat={this.amountFormatter}>Amount</TableHeaderColumn>
+          <TableHeaderColumn dataField="date" dataAlign="right" dataSort={true} dataFormat={this.dateFormatter}>Date</TableHeaderColumn>
+        </BootstrapTable>
       </Panel>
     );
   };
 }
+
 
 const mapStateToProps = (state) => {
   return {
