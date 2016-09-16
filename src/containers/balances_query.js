@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
 import DatePicker from 'react-bootstrap-date-picker';
+import dateUtils from '../utils/dates';
 import { queryBalances } from '../actions';
 import { getCashBalancesQueryParameters } from '../selectors';
 
@@ -49,11 +50,11 @@ class BalancesQuery extends Component {
   }
 
   onDateFromParameterChange(date) {
-    this.setState({ paramDateFrom: this.parseDateToMillis(date) });
+    this.setState({ paramDateFrom: dateUtils.convertToUTCStartOfDay(dateUtils.parseDateToMillis(date)) });
   }
 
   onDateToParameterChange(date) {
-    this.setState({ paramDateTo: this.parseDateToMillis(date) });
+    this.setState({ paramDateTo: dateUtils.convertToUTCEndOfDay(dateUtils.parseDateToMillis(date)) });
   }
 
   buildQueryParametersFromLocalState() {
@@ -62,14 +63,6 @@ class BalancesQuery extends Component {
       dateFrom: this.state.paramDateFrom,
       dateTo: this.state.paramDateTo
     }
-  }
-
-  parseDateToMillis(date) {
-    return date != null ? new Date(date).getTime() : null;
-  }
-
-  convertDateFromMillis(date) {
-    return date != null ? new Date(date).toISOString() : null;
   }
 
   render() {
@@ -95,7 +88,7 @@ class BalancesQuery extends Component {
             </Col>
             <Col sm={3}>
               <DatePicker
-                value={this.convertDateFromMillis(this.state.paramDateFrom)}
+                value={dateUtils.convertDateFromMillis(this.state.paramDateFrom)}
                 onChange={this.onDateFromParameterChange} />
             </Col>
             <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
@@ -103,7 +96,7 @@ class BalancesQuery extends Component {
             </Col>
             <Col sm={3}>
               <DatePicker
-                value={this.convertDateFromMillis(this.state.paramDateTo)}
+                value={dateUtils.convertDateFromMillis(this.state.paramDateTo)}
                 onChange={this.onDateToParameterChange} />
             </Col>
           </FormGroup>

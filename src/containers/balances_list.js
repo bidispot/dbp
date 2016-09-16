@@ -14,12 +14,12 @@ class BalancesList extends Component {
   };
 
   amountFormatter(cell, row) {
-    const glyphIcon = 'glyphicon-'+row.currency.toLowerCase();
-    return cell + '<i class="currency-table glyphicon '+glyphIcon+' "></i> ';
+    const glyphIcon = 'glyphicon-' + row.currency.toLowerCase();
+    return cell + '<i class="currency-table glyphicon ' + glyphIcon + ' "></i> ';
   }
 
   dateFormatter(cell, row) {
-    return moment.unix(cell).format('DD/MM/YYYY');
+    return moment.unix(cell / 1000).format('DD/MM/YYYY');
   }
 
   render() {
