@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Glyphicon, Navbar, Nav, NavDropdown, MenuItem, ProgressBar } from "react-bootstrap";
+import { Badge, Glyphicon, Navbar, Nav, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
 import { Link } from 'react-router';
 import Clock from 'react-clock';
 
@@ -18,7 +18,7 @@ export default class NavBar extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Navbar.Text>
-              <span className="welcome">Hello </span><span className="teal">John Cooper </span><span className="welcome-date">22 September 2016</span>
+              <span className="welcome">Signed in as: </span><span className="teal welcome-username">John Cooper </span><span className="welcome-date">22 September 2016</span>
             </Navbar.Text>
             <div className="clock-div"><Clock /></div>
             <Nav pullRight>

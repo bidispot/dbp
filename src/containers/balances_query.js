@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from "react-bootstrap";
 import { queryBalances } from '../actions';
 import { getCashBalancesQueryParameters } from '../selectors';
+import DatePicker from 'react-bootstrap-date-picker';
 
 class BalancesQuery extends Component {
 
@@ -13,9 +14,9 @@ class BalancesQuery extends Component {
 
     // This is the only place we are allowed to write this.state = ...
     this.state = {
-      paramAccount: props.queryParameters.account,
-      paramDateFrom: props.queryParameters.dateFrom,
-      paramDateTo: props.queryParameters.dateTo
+      paramAccount: props.queryParameters.account || '',
+      paramDateFrom: props.queryParameters.dateFrom || '',
+      paramDateTo: props.queryParameters.dateTo || ''
     };
 
     console.log(this.state);
@@ -49,7 +50,7 @@ class BalancesQuery extends Component {
             <Col componentClass={ControlLabel} sm={2}>
               Account
             </Col>
-            <Col sm={9}>
+            <Col sm={8}>
               <FormControl type="text" placeholder="Account: e.g. 12345"
                 value={this.state.paramAccount} onChange={this.onAccountParameterChange} />
             </Col>
@@ -59,8 +60,17 @@ class BalancesQuery extends Component {
             <Col componentClass={ControlLabel} sm={2}>
               Date
             </Col>
-            <Col sm={9}>
-              <FormControl type="text" placeholder="Date with format: dd/mm/yyyy" />
+            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
+              From
+            </Col>
+            <Col sm={3}>
+              <DatePicker />
+            </Col>
+            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
+              To
+            </Col>
+            <Col sm={3}>
+              <DatePicker />
             </Col>
           </FormGroup>
 

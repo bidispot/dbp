@@ -21,7 +21,8 @@ const DashBoard = () => {
                 count="3"
                 headerText="Pending tasks"
                 footerText="View Details"
-                linkTo="/" />
+                linkTo="/"
+                css="negative"/>
             </div>
           </div>
           <MyPageHeader title="Current data" />
@@ -32,7 +33,8 @@ const DashBoard = () => {
                 count="8"
                 headerText="Negative balances"
                 footerText="View Details"
-                linkTo="/" />
+                linkTo="/"
+                css="negative" />
             </div>
             <div className="col-lg-4 col-md-8">
               <StatWidget style="success"
@@ -40,7 +42,8 @@ const DashBoard = () => {
                 count="34"
                 headerText="Accounts"
                 footerText="View Details"
-                linkTo="/" />
+                linkTo="/"
+                css="positive" />
             </div>
             <div className="col-lg-4 col-md-8">
               <StatWidget style="warning"
@@ -48,7 +51,8 @@ const DashBoard = () => {
                 count="124"
                 headerText="Unmatched instructions (EUR)"
                 footerText="View Details"
-                linkTo="/" />
+                linkTo="/"
+                css="ref_data_primary_color" />
             </div>
           </div>
       </div>
