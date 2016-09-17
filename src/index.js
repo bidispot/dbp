@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import api from './middleware/api.js';
 import routes from './routes';
 import dbpApp from './reducers';
+import "./style/react-bootstrap-table-all.min.css"; // version 2.5.2
 import "./style/style.css";
 
 let store = createStore(dbpApp, applyMiddleware(thunk, api));

@@ -469,3 +469,8 @@ table.dataTable thead .sorting:after {
 .currency-table {
   margin-left: 10px;
 }
+
+.react-bs-table table td {
+  white-space: normal;
+  word-wrap: break-word;
+}
