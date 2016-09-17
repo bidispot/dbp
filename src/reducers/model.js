@@ -1,5 +1,8 @@
 import { Record, Map } from 'immutable';
 
+/**********************
+ * Balances
+ **********************/
 const BalanceRecord = new Record({
   id: null,
   account: '',
@@ -23,6 +26,35 @@ const BalanceQueryRecord = new Record({
 class BalanceQuery extends BalanceQueryRecord {
 }
 
+/**********************
+ * Accounts
+ **********************/
+const AccountRecord = new Record({
+  id: '',
+  account: '',
+  name: '',
+  currency: '',
+  country: '',
+  address: ''
+});
+
+class Account extends AccountRecord{
+}
+
+const AccountMap = Map;
+
+const AccountQueryRecord = new Record({
+  account: null,
+  name: null,
+  currency: null
+})
+
+class AccountQuery extends AccountQueryRecord {
+}
+
+/**********************
+ * General
+ **********************/
 const ErrorRecord = new Record({
   message: ''
 });
@@ -30,4 +62,7 @@ const ErrorRecord = new Record({
 class AppError extends ErrorRecord {
 }
 
-export { Balance, BalanceMap, BalanceQuery, AppError };
+/**********************
+ * Exports
+ **********************/
+export { Balance, BalanceMap, BalanceQuery, Account, AccountMap, AccountQuery, AppError };

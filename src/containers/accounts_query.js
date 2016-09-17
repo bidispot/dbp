@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from 'react-bootstrap';
-import DatePicker from 'react-bootstrap-date-picker';
-import { queryBalances } from '../actions';
-import { getCashBalancesQueryParameters } from '../selectors';
+import { queryAccounts } from '../actions';
+import { getAccountsQueryParameters } from '../selectors';
+
 
 class AccountsQuery extends Component {
 
@@ -13,16 +13,30 @@ class AccountsQuery extends Component {
     // This is the only place we are allowed to write this.state = ...
     this.state = {
       paramAccount: props.queryParameters.account || '',
-      paramDateFrom: props.queryParameters.dateFrom || '',
-      paramDateTo: props.queryParameters.dateTo || ''
+      paramName: props.queryParameters.name || '',
+      paramCurrency: props.queryParameters.currency || ''
     };
 
     this.onAccountParameterChange = this.onAccountParameterChange.bind(this);
+    this.onNameParameterChange = this.onNameParameterChange.bind(this);
+    this.onCurrencyParameterChange = this.onCurrencyParameterChange.bind(this);
     this.onQuerySubmit = this.onQuerySubmit.bind(this);
+    this.onQueryReset = this.onQueryReset.bind(this);
   }
 
   onQuerySubmit(e) {
-    this.props.queryBalances(this.buildQueryParametersFromLocalState());
+    this.props.queryAccounts(this.buildQueryParametersFromLocalState());
+    e.preventDefault();
+  }
+
+  onQueryReset(e) {
+    // Resets internal state only
+    this.setState({
+      paramAccount: '',
+      paramName: '',
+      paramCurrency: ''
+    });
+
     e.preventDefault();
   }
 
@@ -30,11 +44,19 @@ class AccountsQuery extends Component {
     this.setState({ paramAccount: e.target.value });
   }
 
+  onNameParameterChange(e) {
+    this.setState({ paramName: e.target.value });
+  }
+
+  onCurrencyParameterChange(e) {
+    this.setState({ paramCurrency: e.target.value });
+  }
+
   buildQueryParametersFromLocalState() {
     return {
       account: this.state.paramAccount !== '' ? this.state.paramAccount : null,
-      dateFrom: this.state.paramDateFrom !== '' ? this.state.paramDateFrom : null,
-      dateTo: this.state.paramDateTo !== '' ? this.state.paramDateTo : null
+      name: this.state.paramName !== '' ? this.state.paramName : null,
+      currency: this.state.paramCurrency !== '' ? this.state.paramCurrency : null
     }
   }
 
@@ -52,21 +74,27 @@ class AccountsQuery extends Component {
             </Col>
           </FormGroup>
 
-          <FormGroup controlId="date">
+          <FormGroup controlId="name">
             <Col componentClass={ControlLabel} sm={2}>
-              Date
+              Account Name
             </Col>
-            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
-              From
+            <Col sm={8}>
+              <FormControl type="text" placeholder="Account Name: e.g. UBS"
+                value={this.state.paramName} onChange={this.onNameParameterChange} />
             </Col>
-            <Col sm={3}>
-              <DatePicker dateFormat="DD/MM/YYYY" value={new Date().toISOString()} />
+          </FormGroup>
+
+          <FormGroup controlId="currency">
+            <Col componentClass={ControlLabel} sm={2}>
+              Currency
             </Col>
-            <Col componentClass={FormControl.Static} sm={1} className="form-control-static-center">
-              To
-            </Col>
-            <Col sm={3}>
-              <DatePicker dateFormat="DD/MM/YYYY" value={new Date().toISOString()} />
+            <Col sm={8}>
+              <FormControl componentClass="select" value={this.state.paramCurrency} onChange={this.onCurrencyParameterChange}>
+                <option value="">Any</option>
+                <option value="EUR">Euro (EUR - €)</option>
+                <option value="USD">US Dollar (USD - $)</option>
+                <option value="GBP">British Pound (GBP - £)</option>
+              </FormControl>
             </Col>
           </FormGroup>
 
@@ -75,10 +103,7 @@ class AccountsQuery extends Component {
               <Button className="query-button" type="submit">
                 Query
               </Button>
-              <Button className="query-button" type="submit">
-                Count
-              </Button>
-              <Button className="query-button" type="submit">
+              <Button className="query-button" type="submit" onClick={this.onQueryReset}>
                 Reset
               </Button>
             </Col>
@@ -91,9 +116,8 @@ class AccountsQuery extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    queryParameters: getCashBalancesQueryParameters(state)
+    queryParameters: getAccountsQueryParameters(state)
   }
 }
 
-export default connect(mapStateToProps, { queryBalances })(AccountsQuery);
-
+export default connect(mapStateToProps, { queryAccounts })(AccountsQuery);

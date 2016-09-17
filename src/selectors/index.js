@@ -14,3 +14,18 @@ export const getCashBalancesQueryResults = createSelector(
     return ids.map((id) => balances.get(id))
   }
 );
+
+const getAccounts = (state) => state.database.get('accounts');
+
+const getAccountsResultIds = (state) => state.accounts.queryResults;
+
+export const getAccountsQueryParameters = (state) => state.accounts.queryParameters;
+
+// Memoized selector that receives the state as argument and returns the list of
+// Account objects representing the Accounts query results.
+export const getAccountsQueryResults = createSelector(
+  [getAccounts, getAccountsResultIds],
+  (accounts, ids) => {
+    return ids.map((id) => accounts.get(id))
+  }
+);
