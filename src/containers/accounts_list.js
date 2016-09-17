@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import { getCashBalancesQueryResults } from '../selectors';
+import { getAccountsQueryResults } from '../selectors';
 
 class AccountsList extends Component {
   asJson() {
-    return [...this.props.results].map((balance) => {
-      return balance.toJS();
+    return [...this.props.results].map((account) => {
+      return account.toJS();
     });
   };
 
@@ -30,8 +30,10 @@ class AccountsList extends Component {
           search={true}>
           <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
           <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
-          <TableHeaderColumn dataField="accountName" dataAlign="right" dataSort={true}>Account Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="amount" dataAlign="right" dataSort={true}>Amount</TableHeaderColumn>
+          <TableHeaderColumn dataField="name" dataAlign="right" dataSort={true}>Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="currency" dataAlign="right" dataSort={true}>Currency</TableHeaderColumn>
+          <TableHeaderColumn dataField="address" dataAlign="right" dataSort={true}>Address</TableHeaderColumn>
+          <TableHeaderColumn dataField="country" dataAlign="right" dataSort={true}>Country</TableHeaderColumn>
         </BootstrapTable>
 
       </Panel>
@@ -41,7 +43,7 @@ class AccountsList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    results: getCashBalancesQueryResults(state)
+    results: getAccountsQueryResults(state)
   }
 }
 
