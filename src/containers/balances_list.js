@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { connect } from 'react-redux';
-import { getCashBalancesQueryResults } from '../selectors';
 import moment from 'moment';
+import numeral from 'numeral';
+import { getCashBalancesQueryResults } from '../selectors';
 
 class BalancesList extends Component {
 
@@ -14,8 +15,20 @@ class BalancesList extends Component {
   };
 
   amountFormatter(cell, row) {
-    const glyphIcon = 'glyphicon-' + row.currency.toLowerCase();
-    return cell + '<i class="currency-table glyphicon ' + glyphIcon + ' "></i> ';
+    const format = '0,0[.]00';
+    const currencies = {
+      'EUR': '€',
+      'USD': '$',
+      'GBP': '£',
+      'JPY': '¥'
+    }
+
+    let symbol = currencies[row.currency];
+    if (symbol === undefined) {
+      symbol = row.currency;
+    }
+
+    return `${numeral(row.amount).format(format)} ${symbol}`;
   }
 
   dateFormatter(cell, row) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from 'react-bootstrap';
+import FontAwesome from 'react-fontawesome';
 import { queryAccounts } from '../actions';
 import { getAccountsQueryParameters } from '../selectors';
 
@@ -60,6 +61,13 @@ class AccountsQuery extends Component {
     }
   }
 
+  getQueryButtonIcon() {
+    if (this.props.isQuerying) {
+      return (<FontAwesome name='spinner' spin />);
+    }
+    return (<FontAwesome name='search' />);
+  }
+
   render() {
     return (
       <Panel collapsible defaultExpanded header="Query" bsStyle="info">
@@ -101,7 +109,7 @@ class AccountsQuery extends Component {
           <FormGroup>
             <Col smOffset={2} sm={10}>
               <Button className="query-button" type="submit">
-                Query
+                {this.getQueryButtonIcon()} Query
               </Button>
               <Button className="query-button" type="submit" onClick={this.onQueryReset}>
                 Reset
@@ -116,7 +124,8 @@ class AccountsQuery extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    queryParameters: getAccountsQueryParameters(state)
+    queryParameters: getAccountsQueryParameters(state),
+    isQuerying: state.isQuerying
   }
 }
 
