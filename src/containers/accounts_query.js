@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Panel, Form, FormGroup, FormControl, Col, ControlLabel, Button } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import { queryAccounts } from '../actions';
-import { getAccountsQueryParameters } from '../selectors';
+import { getAccountsQueryParameters, getIsAccountsQuerying } from '../selectors';
 
 
 class AccountsQuery extends Component {
@@ -62,6 +62,7 @@ class AccountsQuery extends Component {
   }
 
   getQueryButtonIcon() {
+    console.log(this.props.isQuerying);
     if (this.props.isQuerying) {
       return (<FontAwesome name='spinner' spin />);
     }
@@ -123,9 +124,10 @@ class AccountsQuery extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     queryParameters: getAccountsQueryParameters(state),
-    isQuerying: state.isQuerying
+    isQuerying: getIsAccountsQuerying(state)
   }
 }
 

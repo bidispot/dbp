@@ -5,7 +5,7 @@ import DatePicker from 'react-bootstrap-date-picker';
 import FontAwesome from 'react-fontawesome';
 import dateUtils from '../utils/dates';
 import { queryBalances } from '../actions';
-import { getCashBalancesQueryParameters } from '../selectors';
+import { getCashBalancesQueryParameters, getIsCashBalancesQuerying } from '../selectors';
 
 
 class BalancesQuery extends Component {
@@ -129,7 +129,8 @@ class BalancesQuery extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    queryParameters: getCashBalancesQueryParameters(state)
+    queryParameters: getCashBalancesQueryParameters(state),
+    isQuerying: getIsCashBalancesQuerying(state)
   }
 }
 
