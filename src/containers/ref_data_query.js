@@ -5,7 +5,7 @@ import DatePicker from 'react-bootstrap-date-picker';
 export default class ReferenceDataQuery extends Component {
   render() {
     return (
-      <Panel collapsible defaultExpanded header="Query" bsStyle="warning">
+      <Panel collapsible defaultExpanded header="Query" >
         <Form horizontal>
           <FormGroup controlId="account">
             <Col componentClass={ControlLabel} sm={2}>

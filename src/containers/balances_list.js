@@ -38,14 +38,14 @@ class BalancesList extends Component {
   render() {
     if (!this.props.results || this.props.results.size === 0) {
       return (
-        <Panel collapsible defaultExpanded header="List" bsStyle="success">
+        <Panel collapsible defaultExpanded header="List">
           <div>No rows available</div>
         </Panel>
       );
     }
 
     return (
-      <Panel collapsible defaultExpanded header="List" bsStyle="success">
+      <Panel collapsible defaultExpanded header="List">
         <BootstrapTable
           data={this.asJson()}
           striped={true}

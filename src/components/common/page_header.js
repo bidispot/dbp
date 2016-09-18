@@ -1,15 +1,36 @@
 import React from 'react';
-import { PageHeader } from "react-bootstrap";
+import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
-const MyPageHeader = ({title}) => {
-  if (!title) {
-    return <div></div>
+function renderBreadcrumbs(display, title) {
+  if (!display) {
+    return (<div></div>);
+  }
+
+  return (
+    <div className="breadcrumb-wrapper">
+      <span className="label">You are here:</span>
+      <ol className="breadcrumb">
+        <li><Link to="/">Digital Business Platform</Link></li>
+        <li className="active">{title}</li>
+      </ol>
+    </div>
+  );
+};
+
+const MyPageHeader = ({title, icon, display = true}) => {
+  if (!title || !icon) {
+    return (<div></div>);
   }
   return (
-    <div className="row">
-      <div className="col-lg-12">
-        <PageHeader>{title}</PageHeader>
-      </div>
+    <div className="page-header">
+        <div>
+          <h2>
+            <FontAwesome name={icon} />
+            &nbsp;{title}
+          </h2>
+          { renderBreadcrumbs(display, title) }
+        </div>
     </div>
   );
 };
