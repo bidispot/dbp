@@ -4,7 +4,7 @@ import { Panel, Table } from "react-bootstrap";
 export default class ReferenceDataList extends Component {
   render() {
     return (
-      <Panel collapsible defaultExpanded header="List" bsStyle="warning">
+      <Panel collapsible defaultExpanded header="List">
         <Table responsive striped hover style={{ margin: 20 }}>
           <thead>
             <tr>

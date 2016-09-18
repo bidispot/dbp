@@ -75,7 +75,7 @@ class BalancesQuery extends Component {
 
   render() {
     return (
-      <Panel collapsible defaultExpanded header="Query" bsStyle="success">
+      <Panel collapsible defaultExpanded header="Query">
         <Form horizontal onSubmit={this.onQuerySubmit}>
           <FormGroup controlId="account">
             <Col componentClass={ControlLabel} sm={2}>

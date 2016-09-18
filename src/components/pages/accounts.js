@@ -6,7 +6,7 @@ import List from '../../containers/accounts_list'
 const Accounts = () => {
   return (
     <div className="page-wrapper content">
-      <MyPageHeader title="Accounts" />
+      <MyPageHeader title="Accounts" icon="user" />
       <Query />
       <List />
     </div>

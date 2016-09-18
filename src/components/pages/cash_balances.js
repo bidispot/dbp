@@ -6,7 +6,7 @@ import List from '../../containers/balances_list'
 const Balances = () => {
     return (
       <div className="page-wrapper content">
-        <MyPageHeader title="Cash balances" />
+        <MyPageHeader title="Cash balances" icon="usd" />
         <Query />
         <List />
       </div>
