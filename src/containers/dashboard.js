@@ -75,6 +75,24 @@ class DashBoard extends Component {
             <MyPageHeader title="Dashboard" icon="home" />
             <div className="row">
               <div className="col-lg-3 col-md-6">
+                <StatWidget style="danger"
+                  icon="tasks"
+                  count="3"
+                  headerText="Pending tasks"
+                  footerText="View Details"
+                  linkTo="/"
+                  css="negative"/>
+              </div>
+              <div className="col-lg-2 col-md-6">
+                <StatWidget style="info"
+                  icon="envelope"
+                  count="26"
+                  headerText="Unread messages"
+                  footerText="View Details"
+                  linkTo="/"
+                  css="default-dark"/>
+              </div>
+              <div className="col-lg-2 col-md-4">
                 <div className="panel panel-blue panel-alt widget-today">
                   <div className="panel-heading text-center">
                     <FontAwesome name="calendar" />
@@ -84,7 +102,7 @@ class DashBoard extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-3 col-md-6">
+              <div className="col-lg-2 col-md-4">
                 <div className="panel panel-blue panel-alt widget-time">
                   <div className="panel-heading text-center">
                     <FontAwesome name="clock-o" />
@@ -93,24 +111,6 @@ class DashBoard extends Component {
                     <h3 className="today"><Clock /></h3>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-3 col-md-6">
-                <StatWidget style="danger"
-                  icon="tasks"
-                  count="3"
-                  headerText="Pending tasks"
-                  footerText="View Details"
-                  linkTo="/"
-                  css="negative"/>
-              </div>
-              <div className="col-lg-3 col-md-6">
-                <StatWidget style="info"
-                  icon="envelope"
-                  count="26"
-                  headerText="Unread messages"
-                  footerText="View Details"
-                  linkTo="/"
-                  css="default-dark"/>
               </div>
             </div>
             <MyPageHeader title="Indicators" icon="calendar" display={false} />
