@@ -30,9 +30,7 @@ body {
 }
 
 .breadcrumb-wrapper {
-    position: absolute;
-    top: 73px;
-    right: 25px;
+    padding-top: 25px;
 }
 
 .breadcrumb-wrapper .label {
@@ -47,13 +45,9 @@ body {
     background: none;
     display: inline-block;
     padding: 0;
-}
-.breadcrumb {
-    padding: 8px 15px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     list-style: none;
     background-color: #f5f5f5;
-    border-radius: 4px;
 }
 
 .breadcrumb li {
@@ -184,7 +178,7 @@ body {
 @media (min-width: 768px) {
   .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
     margin-right: 0;
-    margin-left: -1px;
+    margin-left: 0;
   }
 }
 
@@ -520,9 +514,9 @@ table.dataTable thead .sorting:after {
   margin: 10px;
 }
 
-.panel-body {
+.widget-today .panel-body, .widget-time .panel-body {
     padding: 15px;
-    /*height: 45px; */
+    height: 45px;
 }
 
 .panel-default>.panel-heading, .panel-heading {

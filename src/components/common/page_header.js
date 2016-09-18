@@ -8,7 +8,7 @@ function renderBreadcrumbs(display, title) {
   }
 
   return (
-    <div className="breadcrumb-wrapper">
+    <div className="col-xs-12 col-lg-4 col-md-6 pull-right breadcrumb-wrapper">
       <span className="label">You are here:</span>
       <ol className="breadcrumb">
         <li><Link to="/">Digital Business Platform</Link></li>
@@ -24,8 +24,8 @@ const MyPageHeader = ({title, icon, display = true}) => {
   }
   return (
     <div className="page-header">
-        <div>
-          <h2>
+        <div className="row">
+          <h2 className="col-lg-4 col-md-8">
             <FontAwesome name={icon} />
             &nbsp;{title}
           </h2>
