@@ -11,6 +11,7 @@ export const QUERY_ACCOUNTS = 'QUERY_ACCOUNTS';
 export const QUERY_ACCOUNTS_SUCCESS = 'QUERY_ACCOUNTS_SUCCESS';
 export const QUERY_ACCOUNTS_FAILURE = 'QUERY_ACCOUNTS_FAILURE';
 export const RESET_ERRORS = "RESET_ERRORS";
+export const SELECT_FAVORITE_ACCOUNT = "SELECT_FAVORITE_ACCOUNT";
 
 const BALANCES_URL = 'balances/query';
 const ACCOUNTS_URL = 'accounts/query';
@@ -74,5 +75,21 @@ export function queryAccounts(params) {
 export function resetErrors() {
   return {
     type: RESET_ERRORS
+  }
+}
+
+export function selectFavoriteAccount(account) {
+  return dispatch => {
+    dispatch(resetErrors());
+    dispatch(selectAccount(account));
+    //const accountId = account.account;
+    dispatch(queryChartBalances({ account }));
+  }
+}
+
+export function selectAccount(account) {
+  return {
+    type: SELECT_FAVORITE_ACCOUNT,
+    account
   }
 }
