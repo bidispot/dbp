@@ -1,11 +1,12 @@
 import { Record, List } from 'immutable';
 import { BalanceQuery } from './model';
-import { QUERY_CHART_BALANCES, QUERY_CHART_BALANCES_SUCCESS, QUERY_CHART_BALANCES_FAILURE } from '../actions/index';
+import { SELECT_FAVORITE_ACCOUNT, QUERY_CHART_BALANCES, QUERY_CHART_BALANCES_SUCCESS, QUERY_CHART_BALANCES_FAILURE } from '../actions/index';
 
 const StateRecord = new Record({
   isQuerying: false,
   queryResults: new List(),
-  queryParameters: new BalanceQuery()
+  queryParameters: new BalanceQuery(),
+  favoriteAccount: null
 });
 
 class State extends StateRecord {
@@ -41,6 +42,8 @@ export default (state = INITIAL_STATE, action) => {
     case QUERY_CHART_BALANCES_FAILURE:
       return state
         .set('isQuerying', false);
+    case SELECT_FAVORITE_ACCOUNT:
+      return state.set('favoriteAccount', action.account);
     default:
       return state;
   }

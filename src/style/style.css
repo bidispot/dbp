@@ -13,6 +13,12 @@ body {
   color: #1d2939;
 }
 
+.selected-cell, .btn-success {
+  background-color: #1caf9a !important;
+  color: #ffffff;
+  background-image: none;
+}
+
 .orange {
   color: orange;
 }

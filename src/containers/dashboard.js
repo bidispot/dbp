@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
 import MyPageHeader from '../components/common/page_header';
 import StatWidget from "../components/common/stat_widget";
@@ -11,7 +12,7 @@ import ReactHighcharts from 'react-highcharts';
 import HighchartsMore from 'highcharts-more';
 import HighchartsExporting from 'highcharts-exporting';
 import { queryChartBalances } from '../actions';
-import { getChartBalancesQueryResults } from '../selectors';
+import { getFavoriteAccount, getChartBalancesQueryResults, getChartBalancesQueryParameters } from '../selectors';
 
 HighchartsMore(ReactHighcharts.Highcharts);
 HighchartsExporting(ReactHighcharts.Highcharts);
@@ -27,9 +28,11 @@ class DashBoard extends Component {
   }
 
   onQuerySubmit(e) {
-    this.props.queryBalances({ account: '12345' });
-    if (e) {
-      e.preventDefault();
+    if (this.props.favoriteAccount) {
+      this.props.queryBalances({ account: this.props.favoriteAccount.account });
+      if (e) {
+        e.preventDefault();
+      }
     }
   }
 
@@ -55,6 +58,11 @@ class DashBoard extends Component {
   }
 
   renderLineChart() {
+    if (!this.props.favoriteAccount) {
+      return (
+        <div className="col-lg-9 col-md-10"><br /><Link to="/balances">Please select your favorite account.</Link></div>
+      );
+    }
     if (!this.props.results || this.props.results.size === 0) {
       return (
         <div className="col-lg-9 col-md-10">Loading...</div>
@@ -75,7 +83,7 @@ class DashBoard extends Component {
 
     const config = {
       title: {
-        text: 'Cash balances for Barclays London in GBP'
+        text: `Cash balances for ${this.props.favoriteAccount.accountName} (${this.props.queryParameters.account})`
       },
       xAxis: {
         categories: dates.reverse()
@@ -84,7 +92,7 @@ class DashBoard extends Component {
         items: formattedAmounts.reverse()
       },
       series: [{
-        name: 'Cash balances for Barclays London - 12345',
+        name: `Cash balances for ${this.props.favoriteAccount.accountName} (${this.props.queryParameters.account})`,
         data: amounts.reverse(),
         tooltip: {
           valueDecimals: 2
@@ -93,8 +101,20 @@ class DashBoard extends Component {
     };
 
     return (
-      <div className="col-lg-10 col-md-10">
-        <ReactHighcharts config={config} />
+      <div>
+        <div className="col-lg-10 col-md-10">
+          <br />
+          <Form horizontal onSubmit={this.onQuerySubmit}>
+            <ControlLabel>Cash balances for {this.props.favoriteAccount.accountName} </ControlLabel>
+            <Button className="refresh-button" type="submit">
+              Refresh
+            </Button>
+          </Form>
+          <br />
+        </div>
+        <div className="col-lg-10 col-md-10">
+          <ReactHighcharts config={config} />
+        </div>
       </div>
     );
   }
@@ -174,16 +194,6 @@ class DashBoard extends Component {
           </div>
         </div>
         <MyPageHeader title="My monitor" icon="area-chart" display={false} />
-        <div className="col-lg-10 col-md-10">
-          <br />
-          <Form horizontal onSubmit={this.onQuerySubmit}>
-            <ControlLabel>Cash balances for Barclays London - 12345 </ControlLabel>
-            <Button className="refresh-button" type="submit">
-              Refresh
-            </Button>
-          </Form>
-          <br />
-        </div>
         { this.renderLineChart() }
       </div>
     );
@@ -193,7 +203,9 @@ class DashBoard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    results: getChartBalancesQueryResults(state)
+    results: getChartBalancesQueryResults(state),
+    queryParameters: getChartBalancesQueryParameters(state),
+    favoriteAccount: getFavoriteAccount(state)
   }
 }
 

@@ -19,6 +19,8 @@ export const getCashBalancesQueryResults = createSelector(
 
 const getChartResultIds = (state) => state.charts.queryResults;
 
+export const getChartBalancesQueryParameters = (state) => state.charts.queryParameters;
+
 export const getChartBalancesQueryResults = createSelector(
   [getCashBalances, getChartResultIds],
   (balances, ids) => {
@@ -42,3 +44,5 @@ export const getAccountsQueryResults = createSelector(
     return ids.map((id) => accounts.get(id))
   }
 );
+
+export const getFavoriteAccount = (state) => state.charts.favoriteAccount;
