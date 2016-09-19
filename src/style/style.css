@@ -646,3 +646,16 @@ table.dataTable thead .sorting:after {
   white-space: normal;
   word-wrap: break-word;
 }
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>span, .pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #1d2939;
+    border-color: #1d2939;
+}
+
+.pagination>.active>a:hover, .pagination>.active>span:hover {
+    background-color: #1caf9a;
+    border-color: #1caf9a;
+}

@@ -40,9 +40,6 @@ export default class ReferenceDataQuery extends Component {
                 Query
               </Button>
               <Button className="query-button" type="submit">
-                Count
-              </Button>
-              <Button className="query-button" type="submit">
                 Reset
               </Button>
             </Col>

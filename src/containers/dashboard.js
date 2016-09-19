@@ -27,7 +27,7 @@ class DashBoard extends Component {
   }
 
   onQuerySubmit(e) {
-    this.props.queryBalances({ account: '13452' });
+    this.props.queryBalances({ account: '12345' });
     if (e) {
       e.preventDefault();
     }
@@ -57,7 +57,7 @@ class DashBoard extends Component {
   renderLineChart() {
     if (!this.props.results || this.props.results.size === 0) {
       return (
-        <div>Loading...</div>
+        <div className="col-lg-9 col-md-10">Loading...</div>
       );
     }
 
@@ -75,17 +75,17 @@ class DashBoard extends Component {
 
     const config = {
       title: {
-        text: 'Cash balances'
+        text: 'Cash balances for Barclays London in GBP'
       },
       xAxis: {
-        categories: dates
+        categories: dates.reverse()
       },
       labels: {
-        items: formattedAmounts
+        items: formattedAmounts.reverse()
       },
       series: [{
-        name: 'Cash balances for UBS - 13452',
-        data: amounts,
+        name: 'Cash balances for Barclays London - 12345',
+        data: amounts.reverse(),
         tooltip: {
           valueDecimals: 2
         }
@@ -177,7 +177,7 @@ class DashBoard extends Component {
         <div className="col-lg-9 col-md-10">
           <br />
           <Form horizontal onSubmit={this.onQuerySubmit}>
-            <ControlLabel>Cash balances for client UBS - 13452 </ControlLabel>
+            <ControlLabel>Cash balances for Barclays London - 12345 </ControlLabel>
             <Button className="refresh-button" type="submit">
               Refresh
             </Button>
