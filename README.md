@@ -1,3 +1,13 @@
+#dbp 
+
+![Build status](https://travis-ci.org/Aggouri/dbp.svg?branch=master)
+
+This is a web front-end written in React/Redux which is used as part of an effort to demonstrate the power of an API-first infrastructure. All mock data shown in the app are either in the public domain or randomly generated.
+
+Other components:
+- The back-end, written in Golang, can be found in [dbpgo](https://github.com/Aggouri/dbpgo).
+- There's also an iOS app, written in Swift 3, to be found in [dbp-ios](https://github.com/Aggouri/dbp-ios).
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.  
