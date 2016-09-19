@@ -62,7 +62,6 @@ class AccountsQuery extends Component {
   }
 
   getQueryButtonIcon() {
-    console.log(this.props.isQuerying);
     if (this.props.isQuerying) {
       return (<FontAwesome name='spinner' spin />);
     }
@@ -124,7 +123,6 @@ class AccountsQuery extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     queryParameters: getAccountsQueryParameters(state),
     isQuerying: getIsAccountsQuerying(state)
