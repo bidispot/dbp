@@ -51,11 +51,13 @@ class BalancesList extends Component {
           striped={true}
           hover={true}
           condensed={true}
+          pagination={true}
           search={true}>
           <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
           <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
           <TableHeaderColumn dataField="accountName" dataAlign="right" dataSort={true}>Account Name</TableHeaderColumn>
           <TableHeaderColumn dataField="amount" dataAlign="right" dataSort={true} dataFormat={this.amountFormatter}>Amount</TableHeaderColumn>
+          <TableHeaderColumn dataField="currency" dataAlign="right" hidden={true}>Currency</TableHeaderColumn>
           <TableHeaderColumn dataField="date" dataAlign="right" dataSort={true} dataFormat={this.dateFormatter}>Date</TableHeaderColumn>
         </BootstrapTable>
       </Panel>
