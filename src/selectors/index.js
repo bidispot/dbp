@@ -17,6 +17,15 @@ export const getCashBalancesQueryResults = createSelector(
   }
 );
 
+const getChartResultIds = (state) => state.charts.queryResults;
+
+export const getChartBalancesQueryResults = createSelector(
+  [getCashBalances, getChartResultIds],
+  (balances, ids) => {
+    return ids.map((id) => balances.get(id))
+  }
+);
+
 const getAccounts = (state) => state.database.get('accounts');
 
 const getAccountsResultIds = (state) => state.accounts.queryResults;

@@ -8,8 +8,8 @@ import Clock from 'react-clock';
 import ReactHighcharts from 'react-highcharts';
 import HighchartsMore from 'highcharts-more';
 import HighchartsExporting from 'highcharts-exporting';
-import { queryBalances } from '../actions';
-import { getCashBalancesQueryResults, getCashBalancesQueryParameters, getIsCashBalancesQuerying } from '../selectors';
+import { queryChartBalances } from '../actions';
+import { getChartBalancesQueryResults } from '../selectors';
 
 class DashBoard extends Component {
   constructor(props) {
@@ -25,17 +25,9 @@ class DashBoard extends Component {
   }
 
   onQuerySubmit(e) {
-    this.props.queryBalances(this.buildQueryParametersFromLocalState());
+    this.props.queryBalances({ account: '13452' });
     if (e) {
       e.preventDefault();
-    }
-  }
-
-  buildQueryParametersFromLocalState() {
-    return {
-      account: null,
-      dateFrom: null,
-      dateTo: null
     }
   }
 
@@ -54,7 +46,7 @@ class DashBoard extends Component {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       },
       series: [{
-        name: 'Cash balances for UBS-xxx',
+        name: 'Cash balances for UBS - 13452',
         data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 295.6, 454.4],
         tooltip: {
           valueDecimals: 2
@@ -147,7 +139,7 @@ class DashBoard extends Component {
             <div className="col-lg-9 col-md-10">
               <br />
               <Form horizontal onSubmit={this.onQuerySubmit}>
-                <ControlLabel>Cash balances for client USB-xxx </ControlLabel>
+                <ControlLabel>Cash balances for client UBS - 13452 </ControlLabel>
                 <Button className="refresh-button" type="submit">
                   Refresh
                 </Button>
@@ -163,10 +155,8 @@ class DashBoard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    queryParameters: getCashBalancesQueryParameters(state),
-    isQuerying: getIsCashBalancesQuerying(state),
-    results: getCashBalancesQueryResults(state)
+    results: getChartBalancesQueryResults(state)
   }
 }
 
-export default connect(mapStateToProps, { queryBalances })(DashBoard);
+export default connect(mapStateToProps, { queryBalances: queryChartBalances })(DashBoard);
