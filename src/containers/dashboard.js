@@ -93,7 +93,7 @@ class DashBoard extends Component {
     };
 
     return (
-      <div className="col-lg-9 col-md-10">
+      <div className="col-lg-10 col-md-10">
         <ReactHighcharts config={config} />
       </div>
     );
@@ -148,8 +148,8 @@ class DashBoard extends Component {
           <div className="col-lg-3 col-md-6">
             <StatWidget style="danger"
               icon="usd"
-              count="8"
-              headerText="Negative balances"
+              count="1"
+              headerText="Negative balance"
               footerText="View Details"
               linkTo="/balances"
               css="negative" />
@@ -157,7 +157,7 @@ class DashBoard extends Component {
           <div className="col-lg-3 col-md-6">
             <StatWidget style="success"
               icon="user"
-              count="34"
+              count="7"
               headerText="Accounts"
               footerText="View Details"
               linkTo="/accounts"
@@ -166,7 +166,7 @@ class DashBoard extends Component {
           <div className="col-lg-4 col-md-6">
             <StatWidget style="warning"
               icon="eur"
-              count="124"
+              count="8"
               headerText="Unmatched instructions (EUR)"
               footerText="View Details"
               linkTo="/ref_data"
@@ -174,7 +174,7 @@ class DashBoard extends Component {
           </div>
         </div>
         <MyPageHeader title="My monitor" icon="area-chart" display={false} />
-        <div className="col-lg-9 col-md-10">
+        <div className="col-lg-10 col-md-10">
           <br />
           <Form horizontal onSubmit={this.onQuerySubmit}>
             <ControlLabel>Cash balances for Barclays London - 12345 </ControlLabel>
