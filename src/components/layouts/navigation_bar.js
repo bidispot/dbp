@@ -136,10 +136,9 @@ export default class NavBar extends Component {
                 <li className="">
                   <Link to="/accounts"><div className="sidebar-icon"><FontAwesome name="user" /></div> &nbsp; Accounts</Link>
                 </li>
-                { /*
                 <li>
-                  <Link to="/ref_data" className=""><div className="sidebar-icon"><FontAwesome name="line-chart" /></div> &nbsp; Reference Data</Link>
-                </li> */ }
+                  <Link to="/ref_data" className=""><div className="sidebar-icon"><FontAwesome name="line-chart" /></div> &nbsp; Prices</Link>
+                </li>
                 <li>
                   <Link to="/"><div className="sidebar-icon"><FontAwesome name="info" /></div> &nbsp; About</Link>
                 </li>

@@ -1,0 +1,648 @@
+{
+  "MsgType": {
+    "id": 35,
+    "name": "MsgType",
+    "type": "string",
+    "value": "RDI:ProductSnapshot",
+    "value_raw": "BU"
+  },
+  "MsgSeqNum": {
+    "id": 34,
+    "name": "MsgSeqNum",
+    "type": "uInt32",
+    "value": "1338"
+  },
+  "MarketID": {
+    "id": 1301,
+    "name": "MarketID",
+    "type": "string",
+    "value": "XEUR"
+  },
+  "MarketSegmentID": {
+    "id": 1300,
+    "name": "MarketSegmentID",
+    "type": "uInt32",
+    "value": "589"
+  },
+  "TradeDate": {
+    "id": 75,
+    "name": "TradeDate",
+    "type": "uInt32",
+    "value": "20160920"
+  },
+  "MarketSegment": {
+    "id": 7703,
+    "name": "MarketSegment",
+    "type": "string",
+    "value": "FDAX"
+  },
+  "MarketSegmentDesc": {
+    "id": 1396,
+    "name": "MarketSegmentDesc",
+    "type": "string",
+    "value": "FUT ON DAX INDEX"
+  },
+  "MarketSegmentSymbol": {
+    "id": 7177,
+    "name": "MarketSegmentSymbol",
+    "type": "string",
+    "value": "DE0008469594"
+  },
+  "ParentMktSegmID": {
+    "id": 1325,
+    "name": "ParentMktSegmID",
+    "type": "string",
+    "value": "FINX"
+  },
+  "Currency": {
+    "id": 15,
+    "name": "Currency",
+    "type": "string",
+    "value": "EUR"
+  },
+  "MarketSegmentStatus": {
+    "id": 28599,
+    "name": "MarketSegmentStatus",
+    "type": "field",
+    "value": "1",
+    "value_raw": "0",
+    "value_fmt": "Active"
+  },
+  "USFirmFlag": {
+    "id": 9543,
+    "name": "USFirmFlag",
+    "type": "field",
+    "value": "Y",
+    "value_raw": "1",
+    "value_fmt": "Yes"
+  },
+  "PartitionID": {
+    "id": 5948,
+    "name": "PartitionID",
+    "type": "uInt32",
+    "value": "1"
+  },
+  "UnderlyingSecurityExchange": {
+    "id": 30308,
+    "name": "UnderlyingSecurityExchange",
+    "type": "string",
+    "value": "XETR"
+  },
+  "UnderlyingSymbol": {
+    "id": 30311,
+    "name": "UnderlyingSymbol",
+    "type": "string",
+    "value": "DAX"
+  },
+  "UnderlyingSecurityID": {
+    "id": 30309,
+    "name": "UnderlyingSecurityID",
+    "type": "string",
+    "value": "DE0008469008"
+  },
+  "UnderlyingSecurityIDSource": {
+    "id": 30305,
+    "name": "UnderlyingSecurityIDSource",
+    "type": "string",
+    "value": "4"
+  },
+  "UnderlyingPrevClosePx": {
+    "id": 28843,
+    "name": "UnderlyingPrevClosePx",
+    "type": "decimal",
+    "value": "10373.87"
+  },
+  "QuoteSideIndicator": {
+    "id": 28814,
+    "name": "QuoteSideIndicator",
+    "type": "field",
+    "value": "1",
+    "value_fmt": "OneSidedQuoteAllowed"
+  },
+  "FastMarketPercentage": {
+    "id": 28833,
+    "name": "FastMarketPercentage",
+    "type": "decimal",
+    "value": "0"
+  },
+  "TickRules": {
+    "name": "TickRules",
+    "type": "sequence",
+    "length_id": 1205,
+    "length_name": "NoTickRules",
+    "length": 2,
+    "0": {
+      "TickRuleProductComplex": {
+        "id": 28823,
+        "name": "TickRuleProductComplex",
+        "type": "field",
+        "value": "1",
+        "value_raw": "0",
+        "value_fmt": "SimpleInstrument"
+      },
+      "StartTickPriceRange": {
+        "id": 1206,
+        "name": "StartTickPriceRange",
+        "type": "decimal",
+        "value": "0"
+      },
+      "EndTickPriceRange": {
+        "id": 1207,
+        "name": "EndTickPriceRange",
+        "type": "decimal",
+        "value": "99999.9999"
+      },
+      "TickIncrement": {
+        "id": 1208,
+        "name": "TickIncrement",
+        "type": "decimal",
+        "value": "0.5"
+      }
+    },
+    "1": {
+      "TickRuleProductComplex": {
+        "id": 28823,
+        "name": "TickRuleProductComplex",
+        "type": "field",
+        "value": "5",
+        "value_raw": "4",
+        "value_fmt": "FuturesSpread"
+      },
+      "StartTickPriceRange": {
+        "id": 1206,
+        "name": "StartTickPriceRange",
+        "type": "decimal",
+        "value": "0"
+      },
+      "EndTickPriceRange": {
+        "id": 1207,
+        "name": "EndTickPriceRange",
+        "type": "decimal",
+        "value": "99999.9999"
+      },
+      "TickIncrement": {
+        "id": 1208,
+        "name": "TickIncrement",
+        "type": "decimal",
+        "value": "0.5"
+      }
+    }
+  },
+  "MatchRules": {
+    "name": "MatchRules",
+    "type": "sequence",
+    "length_id": 1235,
+    "length_name": "NoMatchRules",
+    "length": 2,
+    "0": {
+      "MatchRuleProductComplex": {
+        "id": 28824,
+        "name": "MatchRuleProductComplex",
+        "type": "field",
+        "value": "1",
+        "value_raw": "0",
+        "value_fmt": "SimpleInstrument"
+      },
+      "MatchAlgorithm": {
+        "id": 1142,
+        "name": "MatchAlgorithm",
+        "type": "field",
+        "value": "PT",
+        "value_raw": "0",
+        "value_fmt": "PriceTime"
+      }
+    },
+    "1": {
+      "MatchRuleProductComplex": {
+        "id": 28824,
+        "name": "MatchRuleProductComplex",
+        "type": "field",
+        "value": "5",
+        "value_raw": "4",
+        "value_fmt": "FuturesSpread"
+      },
+      "MatchAlgorithm": {
+        "id": 1142,
+        "name": "MatchAlgorithm",
+        "type": "field",
+        "value": "PT",
+        "value_raw": "0",
+        "value_fmt": "PriceTime"
+      }
+    }
+  },
+  "QuoteSizeRules": {
+    "name": "QuoteSizeRules",
+    "type": "sequence",
+    "length_id": 28829,
+    "length_name": "NoQuoteSizeRules",
+    "length": 2,
+    "0": {
+      "MinBidSize": {
+        "id": 647,
+        "name": "MinBidSize",
+        "type": "uInt32",
+        "value": "1"
+      },
+      "MinOfferSize": {
+        "id": 648,
+        "name": "MinOfferSize",
+        "type": "uInt32",
+        "value": "1"
+      },
+      "FastMarketIndicator": {
+        "id": 28828,
+        "name": "FastMarketIndicator",
+        "type": "field",
+        "value": "0",
+        "value_fmt": "No"
+      }
+    },
+    "1": {
+      "MinBidSize": {
+        "id": 647,
+        "name": "MinBidSize",
+        "type": "uInt32",
+        "value": "1"
+      },
+      "MinOfferSize": {
+        "id": 648,
+        "name": "MinOfferSize",
+        "type": "uInt32",
+        "value": "1"
+      },
+      "FastMarketIndicator": {
+        "id": 28828,
+        "name": "FastMarketIndicator",
+        "type": "field",
+        "value": "1",
+        "value_fmt": "Yes"
+      }
+    }
+  },
+  "FlexRules": {
+    "name": "FlexRules",
+    "type": "sequence",
+    "length_id": 28830,
+    "length_name": "NoFlexProductEligibilities",
+    "length": 1,
+    "0": {
+      "FlexProductEligibilityComplex": {
+        "id": 28831,
+        "name": "FlexProductEligibilityComplex",
+        "type": "field",
+        "value": "5",
+        "value_raw": "4",
+        "value_fmt": "FuturesSpread"
+      },
+      "FlexProductEligibilityIndicator": {
+        "id": 1242,
+        "name": "FlexProductEligibilityIndicator",
+        "type": "field",
+        "value": "Y",
+        "value_raw": "1",
+        "value_fmt": "Yes"
+      }
+    }
+  },
+  "Feeds": {
+    "name": "Feeds",
+    "type": "sequence",
+    "length_id": 1141,
+    "length_name": "NoMDFeedTypes",
+    "length": 5,
+    "0": {
+      "MDFeedType": {
+        "id": 1022,
+        "name": "MDFeedType",
+        "type": "field",
+        "value": "L",
+        "value_raw": "2",
+        "value_fmt": "Low"
+      },
+      "MDBookType": {
+        "id": 1021,
+        "name": "MDBookType",
+        "type": "field",
+        "value": "2",
+        "value_raw": "1",
+        "value_fmt": "PriceDepth"
+      },
+      "MarketDepth": {
+        "id": 264,
+        "name": "MarketDepth",
+        "type": "uInt32",
+        "value": "10"
+      },
+      "MarketDepthTimeInterval": {
+        "id": 28850,
+        "name": "MarketDepthTimeInterval",
+        "type": "uInt32",
+        "value": "450"
+      },
+      "MDRecoveryTimeInterval": {
+        "id": 28851,
+        "name": "MDRecoveryTimeInterval",
+        "type": "uInt32",
+        "value": "10000"
+      },
+      "MDPrimaryFeedLineID": {
+        "id": 28590,
+        "name": "MDPrimaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.73"
+      },
+      "MDPrimaryFeedLineSubID": {
+        "id": 28591,
+        "name": "MDPrimaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      },
+      "MDSecondaryFeedLineID": {
+        "id": 28592,
+        "name": "MDSecondaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.201"
+      },
+      "MDSecondaryFeedLineSubID": {
+        "id": 28593,
+        "name": "MDSecondaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      }
+    },
+    "1": {
+      "MDFeedType": {
+        "id": 1022,
+        "name": "MDFeedType",
+        "type": "field",
+        "value": "HI",
+        "value_raw": "0",
+        "value_fmt": "HighIncremental"
+      },
+      "MDBookType": {
+        "id": 1021,
+        "name": "MDBookType",
+        "type": "field",
+        "value": "2",
+        "value_raw": "1",
+        "value_fmt": "PriceDepth"
+      },
+      "MarketDepth": {
+        "id": 264,
+        "name": "MarketDepth",
+        "type": "uInt32",
+        "value": "20"
+      },
+      "MarketDepthTimeInterval": {
+        "id": 28850,
+        "name": "MarketDepthTimeInterval",
+        "type": "uInt32",
+        "value": "0"
+      },
+      "MDPrimaryFeedLineID": {
+        "id": 28590,
+        "name": "MDPrimaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.21"
+      },
+      "MDPrimaryFeedLineSubID": {
+        "id": 28591,
+        "name": "MDPrimaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59001"
+      },
+      "MDSecondaryFeedLineID": {
+        "id": 28592,
+        "name": "MDSecondaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.149"
+      },
+      "MDSecondaryFeedLineSubID": {
+        "id": 28593,
+        "name": "MDSecondaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59001"
+      }
+    },
+    "2": {
+      "MDFeedType": {
+        "id": 1022,
+        "name": "MDFeedType",
+        "type": "field",
+        "value": "HS",
+        "value_raw": "1",
+        "value_fmt": "HighSnapshot"
+      },
+      "MDBookType": {
+        "id": 1021,
+        "name": "MDBookType",
+        "type": "field",
+        "value": "2",
+        "value_raw": "1",
+        "value_fmt": "PriceDepth"
+      },
+      "MarketDepth": {
+        "id": 264,
+        "name": "MarketDepth",
+        "type": "uInt32",
+        "value": "20"
+      },
+      "MDRecoveryTimeInterval": {
+        "id": 28851,
+        "name": "MDRecoveryTimeInterval",
+        "type": "uInt32",
+        "value": "90000"
+      },
+      "MDPrimaryFeedLineID": {
+        "id": 28590,
+        "name": "MDPrimaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.20"
+      },
+      "MDPrimaryFeedLineSubID": {
+        "id": 28591,
+        "name": "MDPrimaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      },
+      "MDSecondaryFeedLineID": {
+        "id": 28592,
+        "name": "MDSecondaryFeedLineID",
+        "type": "string",
+        "value": "224.0.50.148"
+      },
+      "MDSecondaryFeedLineSubID": {
+        "id": 28593,
+        "name": "MDSecondaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      }
+    },
+    "3": {
+      "MDFeedType": {
+        "id": 1022,
+        "name": "MDFeedType",
+        "type": "field",
+        "value": "HI",
+        "value_raw": "0",
+        "value_fmt": "HighIncremental"
+      },
+      "MDBookType": {
+        "id": 1021,
+        "name": "MDBookType",
+        "type": "field",
+        "value": "3",
+        "value_raw": "2",
+        "value_fmt": "OrderDepth"
+      },
+      "MarketDepthTimeInterval": {
+        "id": 28850,
+        "name": "MarketDepthTimeInterval",
+        "type": "uInt32",
+        "value": "0"
+      },
+      "MDPrimaryFeedLineID": {
+        "id": 28590,
+        "name": "MDPrimaryFeedLineID",
+        "type": "string",
+        "value": "224.0.114.47"
+      },
+      "MDPrimaryFeedLineSubID": {
+        "id": 28591,
+        "name": "MDPrimaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59001"
+      },
+      "MDSecondaryFeedLineID": {
+        "id": 28592,
+        "name": "MDSecondaryFeedLineID",
+        "type": "string",
+        "value": "224.0.114.79"
+      },
+      "MDSecondaryFeedLineSubID": {
+        "id": 28593,
+        "name": "MDSecondaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59001"
+      }
+    },
+    "4": {
+      "MDFeedType": {
+        "id": 1022,
+        "name": "MDFeedType",
+        "type": "field",
+        "value": "HS",
+        "value_raw": "1",
+        "value_fmt": "HighSnapshot"
+      },
+      "MDBookType": {
+        "id": 1021,
+        "name": "MDBookType",
+        "type": "field",
+        "value": "3",
+        "value_raw": "2",
+        "value_fmt": "OrderDepth"
+      },
+      "MDPrimaryFeedLineID": {
+        "id": 28590,
+        "name": "MDPrimaryFeedLineID",
+        "type": "string",
+        "value": "224.0.114.46"
+      },
+      "MDPrimaryFeedLineSubID": {
+        "id": 28591,
+        "name": "MDPrimaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      },
+      "MDSecondaryFeedLineID": {
+        "id": 28592,
+        "name": "MDSecondaryFeedLineID",
+        "type": "string",
+        "value": "224.0.114.78"
+      },
+      "MDSecondaryFeedLineSubID": {
+        "id": 28593,
+        "name": "MDSecondaryFeedLineSubID",
+        "type": "uInt32",
+        "value": "59000"
+      }
+    }
+  },
+  "PriceRangeRules": {
+    "name": "PriceRangeRules",
+    "type": "sequence",
+    "length_id": 28805,
+    "length_name": "NoPriceRangeRules",
+    "length": 2,
+    "0": {
+      "PriceRangeRuleID": {
+        "id": 28806,
+        "name": "PriceRangeRuleID",
+        "type": "uInt32",
+        "value": "154"
+      },
+      "PriceRangeProductComplex": {
+        "id": 28810,
+        "name": "PriceRangeProductComplex",
+        "type": "field",
+        "value": "1",
+        "value_raw": "0",
+        "value_fmt": "SimpleInstrument"
+      },
+      "StartPriceRange": {
+        "id": 28812,
+        "name": "StartPriceRange",
+        "type": "decimal",
+        "value": "0"
+      },
+      "EndPriceRange": {
+        "id": 28813,
+        "name": "EndPriceRange",
+        "type": "decimal",
+        "value": "99999.9999"
+      },
+      "PriceRangeValue": {
+        "id": 28808,
+        "name": "PriceRangeValue",
+        "type": "decimal",
+        "value": "10"
+      }
+    },
+    "1": {
+      "PriceRangeRuleID": {
+        "id": 28806,
+        "name": "PriceRangeRuleID",
+        "type": "uInt32",
+        "value": "185"
+      },
+      "PriceRangeProductComplex": {
+        "id": 28810,
+        "name": "PriceRangeProductComplex",
+        "type": "field",
+        "value": "5",
+        "value_raw": "4",
+        "value_fmt": "FuturesSpread"
+      },
+      "StartPriceRange": {
+        "id": 28812,
+        "name": "StartPriceRange",
+        "type": "decimal",
+        "value": "0"
+      },
+      "EndPriceRange": {
+        "id": 28813,
+        "name": "EndPriceRange",
+        "type": "decimal",
+        "value": "99999.9999"
+      },
+      "PriceRangeValue": {
+        "id": 28808,
+        "name": "PriceRangeValue",
+        "type": "decimal",
+        "value": "3.2"
+      }
+    }
+  }
+}
