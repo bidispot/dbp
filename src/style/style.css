@@ -13,6 +13,19 @@ body {
   color: #1d2939;
 }
 
+.modal-header {
+  background-color: #1d2939;
+  color: #fff;
+}
+
+.modal-header .close {
+    color: #fff;
+}
+
+.select-favorite-table {
+  margin-bottom: 10px;
+}
+
 .selected-cell, .btn-success {
   background-color: #1caf9a !important;
   color: #ffffff;
@@ -102,7 +115,11 @@ body {
   margin-right: 20px;
 }
 
-.refresh-button {
+.switch-account--button {
+  margin-top: 10px;
+}
+
+.refresh-button, .switch-account--button {
   margin-left: 20px;
 }
 

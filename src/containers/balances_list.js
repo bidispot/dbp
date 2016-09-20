@@ -92,6 +92,9 @@ class BalancesList extends Component {
     return (
       <div>
         <Panel collapsible defaultExpanded header="List">
+          <div className="col-lg-9 col-md-10 select-favorite-table">
+            Click to select your favorite account
+          </div>
           <BootstrapTable
             data={this.asJson() }
             striped={true}

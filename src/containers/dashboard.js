@@ -60,7 +60,7 @@ class DashBoard extends Component {
   renderLineChart() {
     if (!this.props.favoriteAccount) {
       return (
-        <div className="col-lg-9 col-md-10"><br /><Link to="/balances">Please select your favorite account.</Link></div>
+        <div className="col-lg-9 col-md-10"><br /><Link to="/accounts">Please select your favorite account.</Link></div>
       );
     }
     if (!this.props.results || this.props.results.size === 0) {
@@ -83,7 +83,7 @@ class DashBoard extends Component {
 
     const config = {
       title: {
-        text: `Cash balances for ${this.props.favoriteAccount.accountName} (${this.props.queryParameters.account})`
+        text: `Cash balances for ${this.props.favoriteAccount.name} (${this.props.queryParameters.account})`
       },
       xAxis: {
         categories: dates.reverse()
@@ -92,7 +92,7 @@ class DashBoard extends Component {
         items: formattedAmounts.reverse()
       },
       series: [{
-        name: `Cash balances for ${this.props.favoriteAccount.accountName} (${this.props.queryParameters.account})`,
+        name: `Cash balances for ${this.props.favoriteAccount.name} (${this.props.queryParameters.account})`,
         data: amounts.reverse(),
         tooltip: {
           valueDecimals: 2
@@ -105,10 +105,13 @@ class DashBoard extends Component {
         <div className="col-lg-10 col-md-10">
           <br />
           <Form horizontal onSubmit={this.onQuerySubmit}>
-            <ControlLabel>Cash balances for {this.props.favoriteAccount.accountName} </ControlLabel>
+            <ControlLabel>Cash balances for {this.props.favoriteAccount.name} </ControlLabel>
             <Button className="refresh-button" type="submit">
               Refresh
             </Button>
+            <Link className="switch-account--button pull-right" to="/accounts">
+              (Switch account)
+            </Link>
           </Form>
           <br />
         </div>
