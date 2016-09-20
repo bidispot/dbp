@@ -107,7 +107,7 @@ class DashBoard extends Component {
           <Form horizontal onSubmit={this.onQuerySubmit}>
             <ControlLabel>Cash balances for {this.props.favoriteAccount.name} </ControlLabel>
             <Button className="refresh-button" type="submit">
-              Refresh
+              <FontAwesome name='refresh'/> Refresh
             </Button>
             <Link className="switch-account--button pull-right" to="/accounts">
               (Switch account)
@@ -192,7 +192,7 @@ class DashBoard extends Component {
               count="8"
               headerText="Unmatched instructions (EUR)"
               footerText="View Details"
-              linkTo="/ref_data"
+              linkTo="/"
               css="ref_data_primary_color" />
           </div>
         </div>

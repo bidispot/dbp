@@ -13,10 +13,6 @@ class BalancesQuery extends Component {
   constructor(props) {
     super(props);
 
-    // This is the only place we are allowed to write this.state = ...
-    // It represents the internal state of the query screen which may be different than the global state
-    // This would normally be an anti-pattern but here we just want to initialise the query screen to the global state
-    // Then, the two will diverge until we execute a query.
     this.state = {
       paramAccount: props.queryParameters.account || '',
       paramDateFrom: props.queryParameters.dateFrom,

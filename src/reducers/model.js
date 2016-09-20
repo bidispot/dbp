@@ -38,7 +38,7 @@ const AccountRecord = new Record({
   address: ''
 });
 
-class Account extends AccountRecord{
+class Account extends AccountRecord {
 }
 
 const AccountMap = Map;
@@ -50,6 +50,26 @@ const AccountQueryRecord = new Record({
 })
 
 class AccountQuery extends AccountQueryRecord {
+}
+
+/**********************
+ * Refdata
+ **********************/
+const RefDataRecord = new Record({
+  id: ''
+});
+
+class RefData extends RefDataRecord {
+}
+
+const RefDataMap = Map;
+
+const RefDataQueryRecord = new Record({
+  product: null,
+  type: null
+})
+
+class RefDataQuery extends RefDataQueryRecord {
 }
 
 /**********************
@@ -65,4 +85,4 @@ class AppError extends ErrorRecord {
 /**********************
  * Exports
  **********************/
-export { Balance, BalanceMap, BalanceQuery, Account, AccountMap, AccountQuery, AppError };
+export { Balance, BalanceMap, BalanceQuery, Account, AccountMap, AccountQuery, RefData, RefDataMap, RefDataQuery, AppError };

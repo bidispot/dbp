@@ -55,6 +55,9 @@ body {
     font-weight: normal;
     display: inline-block;
 }
+.radio-button-group {
+  margin-left: 0px !important;
+}
 
 .breadcrumb {
     background: none;

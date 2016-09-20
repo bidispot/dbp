@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
-import { Panel, Table } from "react-bootstrap";
+import { connect } from 'react-redux';
+import { Panel } from "react-bootstrap";
+import { getT7QueryResults } from '../selectors';
 
-export default class ReferenceDataList extends Component {
+class ReferenceDataList extends Component {
+
   render() {
+    if (!this.props.results || this.props.results.size === 0) {
+      return (
+        <Panel collapsible defaultExpanded header="Overview">
+          <div>Please select a product (future or option).
+            <br />
+            <a href="http://cts.deutsche-boerse.de/rjs" target="blank">EUREX T7 API</a> will be called to get the results.
+            <br />
+            This URL is only accessible from within the DBG Office Automation network.
+          </div>
+        </Panel>
+      );
+    }
+
     return (
-      <Panel collapsible defaultExpanded header="List">
-        <Table responsive striped hover style={{ margin: 20 }}>
-          <thead>
-            <tr>
-              <th>Account</th>
-              <th>Account Name</th>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>12345</td>
-              <td>Fortis</td>
-              <td>EUR</td>
-              <td>3,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>13456</td>
-              <td>Barclays</td>
-              <td>EUR</td>
-              <td>50,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-            <tr>
-              <td>54321</td>
-              <td>ING</td>
-              <td>EUR</td>
-              <td>1,000,000.00</td>
-              <td>13/09/2016</td>
-            </tr>
-          </tbody>
-        </Table>
+      <Panel collapsible defaultExpanded header="Overview">
+
       </Panel>
     );
   };
 }
+
+const mapStateToProps = (state) => {
+  return {
+    results: getT7QueryResults(state)
+  }
+}
+
+export default connect(mapStateToProps, { getT7QueryResults })(ReferenceDataList);

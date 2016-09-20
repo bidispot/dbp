@@ -1,5 +1,6 @@
 import { Schemas } from '../middleware/schema';
 import { API_CALL_INFO } from '../middleware/api';
+import Api from '../middleware/simple_t7_api'
 
 export const QUERY_BALANCES = 'QUERY_BALANCES';
 export const QUERY_BALANCES_SUCCESS = 'QUERY_BALANCES_SUCCESS';
@@ -12,6 +13,8 @@ export const QUERY_ACCOUNTS_SUCCESS = 'QUERY_ACCOUNTS_SUCCESS';
 export const QUERY_ACCOUNTS_FAILURE = 'QUERY_ACCOUNTS_FAILURE';
 export const RESET_ERRORS = "RESET_ERRORS";
 export const SELECT_FAVORITE_ACCOUNT = "SELECT_FAVORITE_ACCOUNT";
+export const QUERY_T7 = "QUERY_T7";
+export const QUERY_T7_SUCCESS = "QUERY_T7_SUCCESS";
 
 const BALANCES_URL = 'balances/query';
 const ACCOUNTS_URL = 'accounts/query';
@@ -91,5 +94,27 @@ export function selectAccount(account) {
   return {
     type: SELECT_FAVORITE_ACCOUNT,
     account
+  }
+}
+
+// T7 reference data
+
+export function fetchT7Data() {
+  return (dispatch) => {
+    dispatch(resetErrors());
+    return Api.getMock().then(resp => {
+      alert("api called");
+      dispatch(setSearchedT7Data({data: resp}));
+    }).catch( (ex) => {
+      alert(ex);
+      console.log(ex);
+    });
+  }
+}
+
+export function setSearchedT7Data({ data }) {
+  return {
+    type: QUERY_T7_SUCCESS,
+    data
   }
 }

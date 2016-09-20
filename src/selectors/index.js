@@ -46,3 +46,16 @@ export const getAccountsQueryResults = createSelector(
 );
 
 export const getFavoriteAccount = (state) => state.charts.favoriteAccount;
+
+// T7 ref data
+
+const getRefData = (state) => state.database.get('refdata');
+
+const getT7ResultIds = (state) => state.refdata.queryResults;
+
+export const getT7QueryResults = createSelector(
+  [getRefData, getT7ResultIds],
+  (refdata, ids) => {
+    return ids.map((id) => refdata.get(id))
+  }
+);
