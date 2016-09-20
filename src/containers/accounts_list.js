@@ -23,13 +23,24 @@ class AccountsList extends Component {
     this.onSelectRow = this.onSelectRow.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.displayFavoriteAccount = this.displayFavoriteAccount.bind(this);
     this.renderPopupText = this.renderPopupText.bind(this);
     selectRowProp.onSelect = this.onSelectRow;
   }
 
+  displayFavoriteAccount() {
+    if (this.props.favoriteAccount) {
+      return (
+        <span> Favorite account: <span className="teal">{this.props.favoriteAccount.name}</span></span>
+      );
+    } else {
+      return "";
+    }
+  }
+
   closeModal() {
     this.setState({ showModal: false });
-    selectRowProp.selected = [];
+    //selectRowProp.selected = [];
   }
 
   openModal() {
@@ -70,7 +81,7 @@ class AccountsList extends Component {
       <div>
         <Panel collapsible defaultExpanded header="List">
           <div className="col-lg-9 col-md-10 select-favorite-table">
-            Click to select your favorite account
+            Click to select your favorite account. { this.displayFavoriteAccount() }
           </div>
           <BootstrapTable
             data={this.asJson() }

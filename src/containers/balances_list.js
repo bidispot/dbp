@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Modal, Button, Panel } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import {  BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import numeral from 'numeral';
+import ReactHighcharts from 'react-highcharts';
 import { getFavoriteAccount, getCashBalancesQueryResults } from '../selectors';
 import { selectFavoriteAccount } from '../actions';
 
@@ -20,27 +21,75 @@ class BalancesList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showModal: false };
+    this.state = {
+      selectedAccount: null
+    };
 
     this.onSelectRow = this.onSelectRow.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.renderPopupText = this.renderPopupText.bind(this);
+    this.renderLineChart = this.renderLineChart.bind(this);
     selectRowProp.onSelect = this.onSelectRow;
   }
 
-  closeModal() {
-    this.setState({ showModal: false });
-    selectRowProp.selected = [];
-  }
-
-  openModal() {
-    this.setState({ showModal: true });
+  dataForSelectedAccount(account) {
+    const selectedAccount = account;
+    return [...this.props.results].map((balance) => {
+      return balance.toJS();
+    }).filter((balance) => balance.account === selectedAccount);
   }
 
   onSelectRow(row, selected) {
-    this.openModal(row);
-    this.props.selectFavoriteAccount(row);
+    this.setState({ selectedAccount: row});
+  }
+
+  renderLineChart() {
+    if (!this.state.selectedAccount) {
+      return (
+        <Panel collapsible defaultExpanded header="List">
+          <div>Please select a row to display the cash balances history.</div>
+        </Panel>
+      );
+    }
+
+    const dataArr = this.dataForSelectedAccount(this.state.selectedAccount.account)
+
+    const dates = dataArr.map((balance) => {
+      return this.dateFormatter(balance.date);
+    });
+
+    const amounts = dataArr.map((balance) => {
+      return balance.amount;
+    });
+
+    const formattedAmounts = dataArr.map((balance) => {
+      return this.amountFormatter(balance.amount, balance.currency);
+    });
+
+    const config = {
+      title: {
+        text: `Cash balances for ${this.state.selectedAccount.accountName} (${this.state.selectedAccount.account})`
+      },
+      xAxis: {
+        categories: dates.reverse()
+      },
+      labels: {
+        items: formattedAmounts.reverse()
+      },
+      series: [{
+        name: `Cash balances for ${this.state.selectedAccount.accountName} (${this.state.selectedAccount.account})`,
+        data: amounts.reverse(),
+        tooltip: {
+          valueDecimals: 2
+        }
+      }]
+    };
+
+    return (
+      <Panel collapsible defaultExpanded header="History">
+        <div className="col-lg-10 col-md-10">
+          <ReactHighcharts config={config} />
+        </div>
+      </Panel>
+    );
   }
 
   asJson() {
@@ -70,16 +119,6 @@ class BalancesList extends Component {
     return moment.unix(cell / 1000).format('DD/MM/YYYY');
   }
 
-  renderPopupText() {
-    if (this.props.favoriteAccount) {
-      return (
-        `Account ${this.props.favoriteAccount.accountName} is the new favorite.`
-      );
-    } else {
-      return ("");
-    }
-  }
-
   render() {
     if (!this.props.results || this.props.results.size === 0) {
       return (
@@ -89,12 +128,11 @@ class BalancesList extends Component {
       );
     }
 
+    const options = {sizePerPageList: [5, 10], sizePerPage: 5};
+
     return (
       <div>
         <Panel collapsible defaultExpanded header="List">
-          <div className="col-lg-9 col-md-10 select-favorite-table">
-            Click to select your favorite account
-          </div>
           <BootstrapTable
             data={this.asJson() }
             striped={true}
@@ -103,7 +141,8 @@ class BalancesList extends Component {
             pagination={true}
             search={true}
             exportCSV={true}
-            selectRow={selectRowProp}>
+            selectRow={selectRowProp}
+            options={options}>
             <TableHeaderColumn dataField="id" isKey={true} hidden={true} dataAlign="right" dataSort={true}>Id</TableHeaderColumn>
             <TableHeaderColumn dataField="account" dataAlign="right" dataSort={true}>Account</TableHeaderColumn>
             <TableHeaderColumn dataField="accountName" dataAlign="right" dataSort={true}>Account Name</TableHeaderColumn>
@@ -112,17 +151,7 @@ class BalancesList extends Component {
             <TableHeaderColumn dataField="date" dataAlign="right" dataSort={true} dataFormat={this.dateFormatter}>Date</TableHeaderColumn>
           </BootstrapTable>
         </Panel>
-        <Modal show={this.state.showModal} onHide={this.closeModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Preferences</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Your new favorite account has been selected</h4>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.closeModal}>Close</Button>
-          </Modal.Footer>
-        </Modal>
+        { this.renderLineChart() }
       </div>
     );
   };
