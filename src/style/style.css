@@ -94,6 +94,22 @@ body {
     color: #777;
 }
 
+.cash-deadline-div {
+  margin-top: 4px;
+}
+
+.calendar-div {
+  margin-top: 6px;
+}
+
+.calendar-text {
+  font-size: 16px;
+}
+
+.cash-deadline {
+  font-size: 16px;
+}
+
 .balances_primary_color {
   color: #9c3;
 }
@@ -199,13 +215,13 @@ body {
     .page-wrapper {
       position: inherit;
       margin: 0 0 0 230px;
-      min-height: 1500px;
+      min-height: 1650px;
     }
 }
 
 @media(min-width:1200px) {
     .page-wrapper {
-      min-height: 1200px;
+      min-height: 1300px;
     }
     .breadcrumb-wrapper {
       padding-top: 25px;

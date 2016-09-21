@@ -102,7 +102,7 @@ class DashBoard extends Component {
 
     return (
       <div>
-        <div className="col-lg-10 col-md-10">
+        <div className="col-lg-9 col-md-10">
           <br />
           <Form horizontal onSubmit={this.onQuerySubmit}>
             <ControlLabel>Cash balances for {this.props.favoriteAccount.name} </ControlLabel>
@@ -115,7 +115,7 @@ class DashBoard extends Component {
           </Form>
           <br />
         </div>
-        <div className="col-lg-10 col-md-10">
+        <div className="col-lg-9 col-md-10">
           <ReactHighcharts config={config} />
         </div>
       </div>
@@ -131,6 +131,7 @@ class DashBoard extends Component {
             <div className="panel panel-blue panel-alt widget-today">
               <div className="panel-heading text-center">
                 <FontAwesome name="calendar" />
+                {/*<div className="calendar-div"><span className="calendar-text">3 events</span></div>*/}
               </div>
               <div className="panel-body text-center">
                 <h3 className="today">23 Sep 16</h3>
@@ -144,6 +145,17 @@ class DashBoard extends Component {
               </div>
               <div className="panel-body text-center">
                 <h3 className="today"><Clock /></h3>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-2 col-md-6">
+            <div className="panel panel-warning panel-alt widget-today">
+              <div className="panel-heading text-center">
+                <FontAwesome name="clock-o" />
+                <div className="cash-deadline-div"><span className="cash-deadline">Cash deadline</span></div>
+              </div>
+              <div className="panel-body text-center">
+                <h3 className="today">4:00PM</h3>
               </div>
             </div>
           </div>
@@ -169,6 +181,24 @@ class DashBoard extends Component {
         <MyPageHeader title="Indicators" icon="calendar" display={false} />
         <div className="row">
           <div className="col-lg-3 col-md-6">
+            <StatWidget style="warning"
+              icon="eur"
+              count="2"
+              headerText="(EUR) Unmatched instructions"
+              footerText="View Details"
+              linkTo="/"
+              css="ref_data_primary_color" />
+          </div>
+          <div className="col-lg-3 col-md-6">
+            <StatWidget style="warning"
+              icon="usd"
+              count="5"
+              headerText="(USD) Unmatched instructions"
+              footerText="View Details"
+              linkTo="/"
+              css="ref_data_primary_color" />
+          </div>
+          <div className="col-lg-3 col-md-6">
             <StatWidget style="danger"
               icon="usd"
               count="1"
@@ -185,15 +215,6 @@ class DashBoard extends Component {
               footerText="View Details"
               linkTo="/accounts"
               css="positive" />
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <StatWidget style="warning"
-              icon="eur"
-              count="8"
-              headerText="Unmatched instructions (EUR)"
-              footerText="View Details"
-              linkTo="/"
-              css="ref_data_primary_color" />
           </div>
         </div>
         <MyPageHeader title="My monitor" icon="area-chart" display={false} />

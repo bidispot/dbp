@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Navbar, Nav, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
+import { Image, Badge, Navbar, Nav, NavDropdown, MenuItem, ProgressBar } from 'react-bootstrap';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router';
 //import Clock from 'react-clock';
@@ -9,10 +9,11 @@ export default class NavBar extends Component {
     return (
       <div>
         <Navbar fluid>
-          <Navbar.Header>
+          <Navbar.Header style={{marginBottom: 10}}>
             <Navbar.Brand>
               <Link to="/">
-                <span className="teal">Digital Business Platform</span>
+                {/*<span className="teal">Digital Business Platform</span>*/}
+                <Image src={require('../../../assets/dbglogo.png')} />
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -130,11 +131,11 @@ export default class NavBar extends Component {
                 <li>
                   <Link to="/"><div className="sidebar-icon"><FontAwesome name="home" /></div> &nbsp; Dashboard</Link>
                 </li>
-                <li>
-                  <Link to="/balances" className=""><div className="sidebar-icon"><FontAwesome name="usd" /></div> &nbsp; Cash balances</Link>
-                </li>
                 <li className="">
                   <Link to="/accounts"><div className="sidebar-icon"><FontAwesome name="user" /></div> &nbsp; Accounts</Link>
+                </li>
+                <li>
+                  <Link to="/balances" className=""><div className="sidebar-icon"><FontAwesome name="usd" /></div> &nbsp; Cash balances</Link>
                 </li>
                 <li>
                   <Link to="/ref_data" className=""><div className="sidebar-icon"><FontAwesome name="line-chart" /></div> &nbsp; Prices</Link>
