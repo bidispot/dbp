@@ -16,7 +16,8 @@ class BalancesQuery extends Component {
     this.state = {
       paramAccount: props.queryParameters.account || '',
       paramDateFrom: props.queryParameters.dateFrom,
-      paramDateTo: props.queryParameters.dateTo
+      paramDateTo: props.queryParameters.dateTo,
+      panelExpanded: true
     };
 
     this.onAccountParameterChange = this.onAccountParameterChange.bind(this);
@@ -29,7 +30,7 @@ class BalancesQuery extends Component {
 
   onQuerySubmit(e) {
     this.props.queryBalances(this.buildQueryParametersFromLocalState());
-    this.setState({ panelCollapsed: false })
+    this.togglePanel();
     e.preventDefault();
   }
 
@@ -41,13 +42,11 @@ class BalancesQuery extends Component {
       paramDateTo: null
     });
 
-    this.togglePanel();
-
     e.preventDefault();
   }
 
   togglePanel() {
-    this.setState({ panelCollapsed: !this.state.panelCollapsed });
+    this.setState({ panelExpanded: !this.state.panelExpanded });
   }
 
   onAccountParameterChange(e) {
@@ -79,7 +78,7 @@ class BalancesQuery extends Component {
 
   render() {
     return (
-      <Panel collapsible defaultExpanded header="Query" onSelect={this.togglePanel} expanded={this.state.panelCollapsed} >
+      <Panel collapsible defaultExpanded header="Query" onSelect={this.togglePanel} expanded={this.state.panelExpanded} >
         <Form horizontal onSubmit={this.onQuerySubmit}>
           <FormGroup controlId="account">
             <Col componentClass={ControlLabel} sm={2}>
