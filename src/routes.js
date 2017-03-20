@@ -1,21 +1,45 @@
 import React from 'react';
-import { IndexRoute, IndexRedirect, Route } from 'react-router';
+import { IndexRedirect, Route /*, RouterContext */ } from 'react-router';
+//import { UserAuthWrapper } from 'redux-auth-wrapper';
+import AppMainLayout from './components/AppMainLayout';
+import welcome from "./modules/welcome";
+import dashboard from "./modules/dashboard";
+import balances from "./modules/balances";
+import accounts from "./modules/accounts";
 
-import NavLayout from "./components/layouts/navigation_bar";
-import HomePage from "./containers/dashboard";
-import Balances from "./components/pages/cash_balances";
-import Accounts from "./components/pages/accounts";
-import Indicators from "./components/pages/indicators";
-import ReferenceData from "./components/pages/ref_data";
+// Redirects to / by default
+// const UserIsAuthenticated = UserAuthWrapper({
+//   authSelector: state => state.welcome, // how to get the user state
+//   redirectAction: RouterContext.replace, // the redux action to dispatch for redirect
+//   wrapperDisplayName: 'UserIsAuthenticated', // a nice name for this auth check
+//   predicate: welcome => welcome.is_authorized, // check if 'is_authorized' exists
+//   allowRedirectBack: false,
+//   failureRedirectPath: '/auth'
+// });
 
-export default (
-    <Route path="/" component={NavLayout}>
-      <IndexRoute component={NavLayout} />
-      <IndexRedirect to="/dashboard" />
-      <Route name="dashboard" path="/dashboard" component={HomePage} />
-      <Route path="/balances" component={Balances} />
-      <Route path="/indicators" component={Indicators} />
-      <Route path="/accounts" component={Accounts} />
-      <Route path="/ref_data" component={ReferenceData} />
+const getRoutes = (store) => {
+  const requireAuth = (nextState, replace) => {
+    const state = store.getState();
+    console.log("Require Auth? ", !state.welcome.is_authorized);
+    if (!state.welcome.is_authorized) {
+      replace({
+        pathname: '/auth',
+        state: { nextPathname: nextState.location.pathname }
+      });
+    }
+  };
+
+  return (
+    <Route path="/">
+      <IndexRedirect to="dashboard" />
+      <Route path="auth" component={welcome.components.WelcomePage} />
+      <Route path="/" component={AppMainLayout}>
+        <Route path="dashboard" component={dashboard.components.DashboardPage} onEnter={requireAuth} />
+        <Route path="balances" component={balances.components.BalancesPage} onEnter={requireAuth} />
+        <Route path="accounts" component={accounts.components.AccountsPage} onEnter={requireAuth} />
+      </Route>
     </Route>
-);
+  );
+};
+
+export default { getRoutes };

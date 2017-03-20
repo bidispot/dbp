@@ -13,6 +13,7 @@ build
 typings/
 .vscode/
 .history/
+.idea/
 
 # misc
 .DS_Store
